@@ -1,0 +1,14 @@
+.product-box{
+    border:2px solid black;
+    text-align: center;
+}
+.product{
+    padding: 10px;
+}
+.product .product-box .book-img{
+    height: 350px;
+    width:250px
+}
+.product .product-box .book-btn button{
+    background-color: rgb(255, 225, 232);
+}
