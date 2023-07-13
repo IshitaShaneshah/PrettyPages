@@ -1,0 +1,57 @@
+.register{
+    border:2px solid white;
+    width:350px;
+    background-color:rgba(153, 153, 153, 0.5);
+    margin:auto;
+    padding: 20px;
+}
+.register-background{
+    /* background-color: rgb(0, 70, 136); */
+    background-image:url("../photos/background.jpeg");
+    padding-top:10%;
+    height: 100vh;
+    background-repeat: no-repeat;
+    background-size:cover ;
+    background-position: center bottom;
+}
+.register .input-fields{
+    margin: 20px 0px;
+    
+}
+
+.register .input-fields label{
+    color:white;
+    font-size: large;
+}
+
+.register .input-fields input{   
+    width:95%;
+    height:30px;
+    margin-top: 5px;
+    border-radius: 5px;
+}
+
+/* .register .register-button{
+    height: 40px;
+    width:100px;
+    background-color: black;
+    color:white;
+}
+.register .register-button:hover{
+    background-color: white;
+    color:black;
+} */
+.register .register-title{
+    text-align:center;
+    font-size: xx-large;
+    color:white;
+}
+
+.register .register-btn{
+    text-align: center;
+    margin:30px 0px 10px 0px;
+}
+.register .login-reg{
+    color:white;
+    text-align:center;
+}
