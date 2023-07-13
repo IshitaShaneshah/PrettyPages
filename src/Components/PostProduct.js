@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import "../CSS/PostProduct.css";
+import uploadbook from "../photos/bookupload.svg"
 const PostProduct = () => {
   const [bookDetails, setBookDetails] = useState({
     title: "",
@@ -10,6 +11,7 @@ const PostProduct = () => {
     genre: "non-fiction",
     subgenre: "",
   });
+  const [uploadBook,setUploadBook]=useState(uploadbook);
   const fiction = [
     "Fantasy",
     "Adventure",
@@ -49,6 +51,7 @@ const PostProduct = () => {
           <div className="col-md-12">
             <label for="bimg">Upload Image :</label>
             <input id="bimg" type="file" />
+            <img src={uploadBook} alt="upload image"/>
           </div>
           <div className="col-md-5">
             <label for="btitle">Title :</label>
