@@ -1,10 +1,9 @@
 //express
 const express = require("express")
 const app= express()
-
-app.get("/" , (req,res) =>{
-    res.send("Main Page")
-})
+const signupRoute = require("./routes/signuproute");
+app.use(express.json())
+app.use("/api/v1" , signupRoute)
 
 app.get("/login", (req,res) => {
     res.send("login page")
@@ -15,7 +14,7 @@ app.get("/signup", (req,res) => {
 })
 
 
-app.listen(3001, ()=>{
+app.listen(3000, ()=>{
     console.log("Server started successfully")
 })
 
