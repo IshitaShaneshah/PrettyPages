@@ -21,7 +21,7 @@ padding: 50px 0px;
    left:-100px; */
 }
 .postProduct .postProductForm .choosefile{
-   border:2px solid black;
+   border: 2px solid rgba(248, 160, 207, 0.671);
    width: 80%;
    height: 35px;
    padding: 5px;
@@ -32,18 +32,77 @@ padding: 50px 0px;
 }
 .postProduct .postProductForm .section1 .productFields input{
    width: 80%;
+   border: 2px solid rgba(248, 160, 207, 0.671);
+   
+
    /* background-color: red; */
 }
 .postProduct .postProductForm .productFields .radio-btn{
    margin: 0px 5px;
+
 }
 
+.postProduct .postProductForm .section3 {
+   position: relative;
+   height: 250px;
+}
 .postProduct .postProductForm .section3 label{
    margin-right: 10px;
 }
 textarea{
    width:80% ;
+   border: 2px solid rgba(248, 160, 207, 0.671);
+
 }
 .postProduct .postProductForm .section3 .productFields input{
    width: 80%;
+   border: 2px solid rgba(248, 160, 207, 0.671);
+
 }
+.postProduct .postProduct-btn{
+   width:200px;
+   height: 40px;
+   background-color: rgba(248, 160, 207, 0.671);
+   color:white;
+   border: 2px solid rgba(248, 160, 207, 0.671);
+   font-size: large;
+   font-weight: bolder;
+   position: absolute;
+   bottom:10%;
+   right:10%;
+}
+/* .postProduct .overlay-btn{
+   position: relative;
+   width:150px;
+
+  
+} */
+/* .postProduct .overlay1,.postProduct .overlay2{
+   position: absolute;
+   border: 1px solid black;
+   color:white;
+   width:75px;
+   height: 40px;
+   display: none;
+   bottom: 0px;
+} */
+/* .postProduct .overlay1{
+   left:-75px;
+   background-color:rgba(248, 160, 207, 0.671);
+   transform: translateX(0);
+   transition-duration: 1s;
+   
+}
+.postProduct .overlay2{
+   left:150px;
+   background-color: red;
+}
+.postProduct .overlay-btn:hover  .overlay1{
+   display:block;
+   transform: translateX(75px);
+
+}
+.postProduct .overlay-btn:hover  .overlay2{
+   display:block;
+
+} */
