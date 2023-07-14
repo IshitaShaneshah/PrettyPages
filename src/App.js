@@ -8,8 +8,8 @@ import PostProduct from './Components/PostProduct';
 function App() {
   return (
   <>
-  <Home/> 
-  <Login/>
+  {/* <Home/> 
+  <Login/> */}
  <PostProduct/>
   </>
   );
