@@ -20,6 +20,10 @@ const Schema = new mongoose.Schema({
     type: String,
     required: true,
   },
+  sub_genre: {
+    type: String,
+    required: true,
+  },
   vendor_mail: {
     type: String,
     required: true,
