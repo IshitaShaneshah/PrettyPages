@@ -1,16 +1,10 @@
-const signupRoute = require("express").Router();
-const signmodel = require("../models/User_model");
+const { Router } = require("express");
+const router= express.Router();
+const usermodel = require("../models/User_model");
+const user_controller = require("../controllers/User_controller");
 
-signupRoute.post("/signup", async (req, res) =>{
-    try {
-        const data = req.body;
-        const newUser = new signmodel(data);
-        await newUser.save().then(()=>{
-            res.status(200).json({message: "successfull"})
-        })
-    } catch (error) {
-        console.log(error)
-    }
-})
+signupRoute.post("/signup", user_controller.userSignup);
+loginRoute.post("/login", user_controller.userLogin);
 
-module.exports = signupRoute;
+
+module.exports = router;
