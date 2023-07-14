@@ -1,7 +1,7 @@
 //express
 const express = require("express")
 const app= express()
-const signupRoute = require("./routes/signuproute");
+const signupRoute = require("./routes/userroutes");
 app.use(express.json())
 app.use("/api/v1" , signupRoute)
 
