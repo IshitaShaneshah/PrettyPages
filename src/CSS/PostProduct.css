@@ -1,11 +1,49 @@
-.PostProduct{
+.postProduct{
 padding: 50px 0px;
 }
-.PostProduct .PostProductForm{
+
+.postProduct .postProductForm .heading{
+   text-align: center;
+}
+.postProduct .postProductForm{
    background-color: rgba(253, 225, 240, 0.671);
    font-size: large;
    padding: 30px 10px;
 }
-.PostProduct .PostProductForm {
+.postProduct .postProductForm .uploadimg img{
+   height: 200px;
+   width:150px;
+  
+}
+.postProduct .postProductForm #bimg{
+   display: none;
+   /* position: relative;
+   left:-100px; */
+}
+.postProduct .postProductForm .choosefile{
+   border:2px solid black;
+   width: 80%;
+   height: 35px;
+   padding: 5px;
+   box-sizing: border-box;
+}
+.postProduct .postProductForm .productFields{
+   margin:10px;
+}
+.postProduct .postProductForm .section1 .productFields input{
+   width: 80%;
+   /* background-color: red; */
+}
+.postProduct .postProductForm .productFields .radio-btn{
+   margin: 0px 5px;
+}
 
+.postProduct .postProductForm .section3 label{
+   margin-right: 10px;
+}
+textarea{
+   width:80% ;
+}
+.postProduct .postProductForm .section3 .productFields input{
+   width: 80%;
 }

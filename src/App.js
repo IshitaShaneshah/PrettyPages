@@ -15,7 +15,7 @@
 
 // export default App;
 import './App.css';
-// import Home from './Components/Home';
+import Home from './Components/Home';
 // import PostProduct from './Components/PostProduct';
 import Register from './Components/Register';
 import  Login from './Components/Login';
@@ -24,8 +24,8 @@ import PostProduct from './Components/PostProduct';
 function App() {
   return (
   <>
-  {/* <Home/> */}
- {/* <Login/> */}
+  {/* <Home/> 
+  <Login/> */}
  <PostProduct/>
   </>
   );
