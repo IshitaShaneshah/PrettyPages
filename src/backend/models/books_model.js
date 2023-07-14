@@ -1,0 +1,37 @@
+const mongoose = require("mongoose");
+const Schema = new mongoose.Schema({
+  author_name: {
+    type: String,
+    required: true,
+  },
+  image: {
+    type: String,
+    required: true,
+  },
+  title: {
+    type: String,
+    required: true,
+  },
+  description: {
+    type: String,
+    required: true,
+  },
+  Genre: {
+    type: String,
+    required: true,
+  },
+  vendor_mail: {
+    type: String,
+    required: true,
+  },
+  price: {
+    type: Number,
+    required: true,
+  },
+  quantity: {
+    type: String,
+    required: true,
+  }
+});
+
+module.exports = mongoose.model("Books", Schema);
