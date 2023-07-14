@@ -1,5 +1,5 @@
 const signupRoute = require("express").Router();
-const signmodel = require("../models/User_model");
+const signmodel = require("../models/signupmodel");
 
 signupRoute.post("/signup", async (req, res) =>{
     try {
