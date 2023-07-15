@@ -1,18 +1,20 @@
 import './App.css';
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Home from './Components/Home';
-// import PostProduct from './Components/PostProduct';
-import Register from './Components/Register';
 import  Login from './Components/Login';
-import PostProduct from './Components/PostProduct';
-
+import WishList from './Components/WishList';
+import Cart from './Components/Cart';
+import Temp from './Components/Temp';
 function App() {
   return (
-  <>
-  {/* <Home/>  */}
-  {/* <Login/> */}
- <PostProduct/>
-  {/* <Register/> */}
-  </>
+    <BrowserRouter>
+    <Routes>
+      <Route path="/" element={<Temp/>}/>
+        <Route path="/wishlist" element={<WishList />} />
+        <Route path="/cart" element={<Cart />} />
+        <Route path="/login" element={<Login/>} />
+    </Routes>
+  </BrowserRouter>
   );
 }
 
