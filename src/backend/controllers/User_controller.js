@@ -2,9 +2,8 @@ const mongodb = require("mongoose");
 const HttpError = require("../Utils/httpError");
 
 const User = require("../models/User_model");
-const Vendor = require("../models/vendor_model");
 const Book = require("../models/books_model");
-const books_model = require("../models/books_model");
+
 
 exports.userSignup = async (req, res, next) => {
   const { email, password } = req.body;
@@ -50,7 +49,7 @@ exports.userLogin = async (req, res) => {
 exports.bookDisplay = async (res, req, next) => {
   const books = "";
   try {
-    books = await books_model.find();
+    books = await Book.find();
     return res.status(200).send(books);
   } catch (err) {
     const error = new HttpError("Something is wrong", 200);
