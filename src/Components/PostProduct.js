@@ -10,6 +10,7 @@ const PostProduct = () => {
     quantity: "",
     genre: "",
     subgenre: "",
+    pages:""
   });
   const [uploadBook, setUploadBook] = useState("");
   const [subGenre, setSubGenre] = useState("");
@@ -103,6 +104,7 @@ const PostProduct = () => {
       quantity: "",
       genre: "",
       subgenre: "",
+      pages:""
     })
      setUploadBook("");
      setSubGenre(false);
@@ -209,6 +211,11 @@ const PostProduct = () => {
               <label for="bqty">Quantity :</label>
               <br />
               <input id="bqty" type="number" value={bookDetails.quantity} name="quantity" onChange={onChangeHandler} required />
+            </div>
+            <div className="productFields">
+              <label for="bpage">Pages :</label>
+              <br />
+              <input id="bpage" type="number" value={bookDetails.pages} name="pages" onChange={onChangeHandler} required />
             </div>
             <div className="overlay-btn">
             <button className="postProduct-btn" type="submit">ADD BOOK</button>
