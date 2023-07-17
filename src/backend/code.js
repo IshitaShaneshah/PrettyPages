@@ -1,9 +1,11 @@
 //express
 const express = require("express");
 const app = express();
-const signupRoute = require("./routes/userroutes");
+const userRoute = require("./routes/userroutes");
+const vendorRoute = require("./routes/veendorroutes")
 app.use(express.json());
-app.use("/api/v1", signupRoute);
+app.use("/api/v1", userRoute);
+app.use("/api/v2", vendorRoute)
 
 app.get("/login", (req, res) => {
   res.send("login page");

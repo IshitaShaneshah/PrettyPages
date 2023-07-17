@@ -1,22 +1,15 @@
-const mongodb = require("mongoose");
 const HttpError = require("../Utils/httpError");
 
-const User = require("../models/User_model");
 const Vendor = require("../models/vendor_model");
 const Book = require("../models/books_model");
 
 exports.vendorSignup = async (req, res, next) => {
   const { email, password } = req.body;
-
-  const NewVendor = new Vendor({
-    email,
-    password,
-  });
-  if (NewVendor.findOne({ email: email })) {
+  if (Vendor.findOne({ email: email })) {
     res.json({ message: "Vendor already exists" });
   } else {
     try {
-      await NewVendor.save();
+      await Vendor.save();
       res.json({ message: "Vendor signed in" });
     } catch (err) {
       console.log(err);
@@ -48,11 +41,22 @@ exports.vendorLogin = async (req, res) => {
 };
 
 exports.bookAdd = async (req, res, next) => {
-  const newBook = new Book(req.body);
+  const newBook = new Book({
+    author_name: req.params.author_name,
+    image: req.params.image,
+    title: req.params.title,
+    description: req.params.description,
+    Genre: req.params.Genre,
+    sub_genre: req.params.sub_genre,
+    pages: req.params.pages,
+    vendor_mail: req.params.vendor_mail,
+    price: req.params.price,
+    quantity: req.params.quantity
+  })
 
-  if (NewBook.findOne({ title: req.body.title })) {
-    res.json({ message: "Book already exists" });
-  } else {
+  // if (Book.findOne({ title: req.body.title })) {
+  //   res.json({ message: "Book already exists" });
+  // } else {
     try {
       await newBook.save();
       res.json({ message: "Book added" });
@@ -61,7 +65,32 @@ exports.bookAdd = async (req, res, next) => {
       const error = new HttpError("Failed. Try again after some time", 500);
       return next(error);
     }
+  // }
+};
+
+exports.bookUpdate = async (req,res,next) => {
+  try {
+    Book.findOneAndUpdate({_id : req.params.id}, {
+      $set:{
+        author_name: req.params.author_name,
+        image: req.params.image,
+        title: req.params.title,
+        description: req.params.description,
+        Genre: req.params.Genre,
+        sub_genre: req.params.sub_genre,
+        pages: req.params.pages,
+        vendor_mail: req.params.vendor_mail,
+        price: req.params.price,
+        quantity: req.params.quantity
+      }
+    })
+    .then(result => {
+      res.status(200).json({message: 'Updated'})
+    })
+  } catch (err) {
+    console.log(err);
+    const error = new HttpError("Failed. Try again after some time", 500);
+    return next(error);
   }
 };
 
-// exports.bookUpdateQuantity = async();

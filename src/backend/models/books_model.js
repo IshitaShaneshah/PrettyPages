@@ -24,6 +24,10 @@ const Schema = new mongoose.Schema({
     type: String,
     required: true,
   },
+  pages: {
+    type: Number,
+    required: true,
+  },
   vendor_mail: {
     type: String,
     required: true,
@@ -35,7 +39,7 @@ const Schema = new mongoose.Schema({
   quantity: {
     type: String,
     required: true,
-  }
+  },
 });
 
 module.exports = mongoose.model("Books", Schema);

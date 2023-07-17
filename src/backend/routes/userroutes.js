@@ -1,14 +1,16 @@
-const { Router } = require("express");
+const express = require("express")
+// const { Router } = require("express");
 const router= express.Router();
 
 const user_controller = require("../controllers/User_controller");
 
-signupRoute.post("/signup", user_controller.userSignup);
-loginRoute.post("/login", user_controller.userLogin);
-displayRoute.get("/books", user_controller.bookDisplay);
-searchTitleRoute.get("/book/:title", user_controller.bookSearchByTitle);
-searchGenreRoute.get("/book/:genre", user_controller.bookSearchByGenre);
-searchAuthorRoute.get("/book/:author", user_controller.bookSearchByAuthor);
-searchSubGRoute.get("/book/:sub-genre", user_controller.bookSearchBySub_genre);
+
+router.post("/signup", user_controller.userSignup);
+router.post("/login", user_controller.userLogin);
+router.get("/books", user_controller.bookDisplay);
+router.get("/book/:title", user_controller.bookSearchByTitle);
+router.get("/book/:genre", user_controller.bookSearchByGenre);
+router.get("/book/:author", user_controller.bookSearchByAuthor);
+router.get("/book/:sub-genre", user_controller.bookSearchBySub_genre);
 
 module.exports = router;

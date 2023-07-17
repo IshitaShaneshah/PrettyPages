@@ -1,29 +1,28 @@
-const mongodb = require("mongoose");
+// const express = require("express")
 const HttpError = require("../Utils/httpError");
 
 const User = require("../models/User_model");
 const Book = require("../models/books_model");
 
-
 exports.userSignup = async (req, res, next) => {
-  const { email, password } = req.body;
+  // console.log(req.body)
+  const newUser = new User({
+    email: req.body.email,
+    password: req.body.password
+  })
 
-  const NewUser = new User({
-    email,
-    password,
-  });
-  if (NewUser.findOne({ email: email })) {
-    res.json({ message: "user already exists" });
-  } else {
+//   if (User.findOne({ email: req.body.email })) {
+//     res.json({ message: "user already exists" });
+// }   else {
     try {
-      await NewUser.save();
+      await newUser.save();
       res.json({ message: "User signed in" });
     } catch (err) {
       console.log(err);
       const error = new HttpError("Signup failed", 500);
       return next(error);
     }
-  }
+  // }
 };
 exports.userLogin = async (req, res) => {
   const { email, password } = req.body;
