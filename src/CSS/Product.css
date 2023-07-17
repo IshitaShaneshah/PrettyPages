@@ -1,14 +1,113 @@
-.product-box{
-    border:2px solid black;
-    text-align: center;
-}
+/* Product class */
 .product{
     padding: 10px;
+    margin:20px 0px;
 }
-.product .product-box .book-img{
+
+/* product box */
+.product-box{
+
+    text-align: center; 
+    width:250px;
+    
+}
+@media only screen and (max-width: 570px) {
+    body{
+        background-color: red;
+    }
+    .product{
+        width: 300px;
+        justify-content: center;
+        margin:20px 20%;
+    }
+    .product-box {
+      width: 270px;
+    }
+  }
+.product-box:hover > .product-card{
+    cursor: pointer;
+    transform: rotateY(180deg);
+    perspective: 500px;
+}
+
+
+/* product-card */
+.product .product-box .product-card {
+    width:100%;
     height: 350px;
-    width:250px
+    position: relative;
+    transition: transform 1s;
+    transform-style: preserve-3d;
+
 }
-.product .product-box .book-btn button{
-    background-color: rgb(255, 225, 232);
+ 
+
+/* front portion */
+.product .product-box .product-card .product-front{
+    width:100%;
+    height: 100%;
+    box-shadow: 2px 2px 10px rgba(95, 94, 95, 0.829);
+    position: absolute;
+    backface-visibility: hidden;
+
+}
+.product .product-box .product-card .product-front .book-img{
+    width:100%;
+    height: 100%;
+}
+
+/* back portion */
+
+.product .product-box .product-card .product-back{
+    width:100%;
+    height: 100%;
+    font-size:medium;
+    background-color: rgba(241, 173, 255, 0.829);
+    box-shadow: 2px 2px 10px rgba(88, 46, 97, 0.829);
+    position: absolute;
+    transform: rotateY(180deg);
+    backface-visibility: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+}
+/* book title */
+.product .product-box .book-title2{
+    font-size: large;
+}
+/* buttons */
+.product .book-btn{
+    margin-top:20px ;
+    /* justify-content: center; */
+    width: 100%;
+}
+.product .book-btn button{
+    background-color: rgba(241, 173, 255, 0.829);
+    width: 30%;
+    height: 40px;
+    margin-right: 5%;
+    margin-left: 7%;
+    border-radius: 5px;
+    transform:scale(1);
+    transition-duration: 0.5s;
+    border: 1px solid rgba(241, 173, 255, 0.829);
+    box-shadow: 2px 2px 10px rgb(148, 104, 156);
+}
+.product .book-btn button svg{
+    width: 25px;
+    height: 25px;
+}
+.product .book-btn button:hover{
+    background-color: rgb(72, 15, 85);
+    box-shadow: 2px 2px 10px rgba(88, 46, 97, 0.829);
+    color:white;
+    transform:scale(1.2);
+
+}
+/* know more link */
+.product-back .know-more{
+    text-decoration: none;
+    color: rgba(88, 46, 97, 0.829);
 }

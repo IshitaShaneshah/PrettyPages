@@ -4,14 +4,16 @@ import Navbar from './Navbar'
 import "../CSS/Home.css"
 import Catalog from './Catalog'
 import Intro from "../Components/Intro"
+import BookDetail from './BookDetail'
 const Home = () => {
   return (
     <>
     <Navbar/>
     <Intro/>
-    <Catalog/>
+    {/* <Catalog/> */}
+    <BookDetail/>
     </>
   )
 }
 
-export default Home
+export default Home;
