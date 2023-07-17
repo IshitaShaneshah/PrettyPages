@@ -71,38 +71,3 @@ textarea{
    bottom:10%;
    right:10%;
 }
-/* .postProduct .overlay-btn{
-   position: relative;
-   width:150px;
-
-  
-} */
-/* .postProduct .overlay1,.postProduct .overlay2{
-   position: absolute;
-   border: 1px solid black;
-   color:white;
-   width:75px;
-   height: 40px;
-   display: none;
-   bottom: 0px;
-} */
-/* .postProduct .overlay1{
-   left:-75px;
-   background-color:rgba(248, 160, 207, 0.671);
-   transform: translateX(0);
-   transition-duration: 1s;
-   
-}
-.postProduct .overlay2{
-   left:150px;
-   background-color: red;
-}
-.postProduct .overlay-btn:hover  .overlay1{
-   display:block;
-   transform: translateX(75px);
-
-}
-.postProduct .overlay-btn:hover  .overlay2{
-   display:block;
-
-} */
