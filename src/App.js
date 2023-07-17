@@ -5,11 +5,8 @@ import  Login from './Components/Login';
 import WishList from './Components/WishList';
 import Cart from './Components/Cart';
 import Temp from './Components/Temp';
-<<<<<<< Updated upstream
-import PostProduct from './Components/PostProduct';
-=======
-import { Axios } from 'axios';
->>>>>>> Stashed changes
+import PostProduct from './Components/PostProduct'
+
 function App() {
   return (
     <BrowserRouter>

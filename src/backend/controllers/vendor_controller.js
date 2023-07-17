@@ -41,17 +41,18 @@ exports.vendorLogin = async (req, res) => {
 };
 
 exports.bookAdd = async (req, res, next) => {
+  console.log(req.body);
   const newBook = new Book({
-    author_name: req.params.author_name,
-    image: req.params.image,
-    title: req.params.title,
-    description: req.params.description,
-    Genre: req.params.Genre,
-    sub_genre: req.params.sub_genre,
-    pages: req.params.pages,
-    vendor_mail: req.params.vendor_mail,
-    price: req.params.price,
-    quantity: req.params.quantity
+    author_name: req.body.author_name,
+    // image: req.params.image,
+    title: req.body.title,
+    description: req.body.description,
+    Genre: req.body.Genre,
+    sub_genre: req.body.sub_genre,
+    pages: req.body.pages,
+    vendor_mail: req.body.vendor_mail,
+    price: req.body.price,
+    quantity: req.body.quantity
   })
 
   // if (Book.findOne({ title: req.body.title })) {

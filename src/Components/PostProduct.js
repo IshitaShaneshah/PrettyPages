@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import axios from "axios";
 import "../CSS/PostProduct.css";
 const PostProduct = () => {
   const [bookDetails, setBookDetails] = useState({
@@ -92,8 +93,21 @@ const PostProduct = () => {
   const submitHandler=(event)=>{
     event.preventDefault();
     if(bookDetails.title && bookDetails.author && bookDetails.img && bookDetails.price && bookDetails.desc && bookDetails.quantity && bookDetails.genre && bookDetails.subgenre)
-    {
-     console.log("hogaya")
+    { console.log(bookDetails);
+      axios.post("http://localhost:3100/api/v2/bookAdd",
+      {
+        author_name: bookDetails.author,
+          // image: bookDetails.img,
+          title: bookDetails.title,
+          description: bookDetails.desc,
+          Genre: bookDetails.genre,
+          sub_genre: bookDetails.subgenre,
+          pages: bookDetails.pages,
+          vendor_mail: "dhfdv",
+          price: bookDetails.price,
+          quantity: bookDetails.quantity
+       } )
+       .then(console.log("Done"))
      console.log("details",bookDetails);
      setBookDetails({
       title: "",
