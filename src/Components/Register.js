@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import axios from 'axios';
 import "../CSS/Register.css"
 const Register = () => {
   const [user,setUser]=useState({
@@ -13,7 +14,10 @@ const Register = () => {
   const submitHandler=(event)=>{
     event.preventDefault();
     if(user.email && user.password && user.repassword===user.password){
-     console.log("hogaya")
+      axios.post("http://localhost:3100/api/v2/signup",{
+        email: user.email,
+        password: user.password
+      }).then(console.log(user))
     }
     else{
       alert("Invalid Credentials")

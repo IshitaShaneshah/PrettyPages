@@ -1,10 +1,11 @@
 import React,{useState} from 'react'
+import axios from 'axios';
 import "../CSS/Register.css"
+import { exists } from '../backend/models/User_model';
 const Login = () => {
   const [user,setUser]=useState({
     email:"",
-    password:"",
-    repassword:""
+    password:""
   });
   const onChangeHandler=(event)=>{
     const { name, value } = event.target;
@@ -14,7 +15,18 @@ const Login = () => {
   const submitHandler=(event)=>{
     event.preventDefault();
     if(user.email && user.password){
-     console.log("hogaya")
+      axios.post("http://localhost:3100/api/v2/login",{
+        email: user.email, password: user.password
+      })
+      .then(res =>{
+        if(res.data){
+          console.log("user login");
+        }
+        else{
+          console.log("sign up required");
+        }
+      })
+      
     }
     else{
       alert("Invalid Credentials")
