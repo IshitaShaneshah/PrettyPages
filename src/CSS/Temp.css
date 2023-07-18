@@ -1,34 +1,80 @@
-.book{
-   width: 300px;
-   margin: auto;
-   height: 300px;
-    position:relative;
-    margin-top: 200px;
+.bookinfo{
+  background-color: rgba(241, 173, 255, 0.829);
+  height: 100vh;
+  padding-top: 5%;
 }
-.page{
-    width:100%;
-    height: 100%;  
-    box-sizing:content-box;
-    position: absolute;
-    /* transform: rotateX('angle'); */
-    transition-duration: 4s;
-    /* transform-style: preserve-3d; */
-  /* backface-visibility: hidden; */
-  background-color: white;
-  transform-origin:left bottom;
+.book {
+  width: 300px;
+  margin: auto;
+  height: 300px;
+  position: relative;
+
+  perspective: 500;
 }
-.book .page img{
-   height: 100%;
-   width: 100%;
+.page {
+  width: 100%;
+  height: 100%;
+  box-sizing: content-box;
+  position: absolute;
+  perspective: 500;
+  /* transform: rotateX('angle'); */
+  /* transition-duration: 4s; */
+  /* transform-style: preserve-3d; */
+  backface-visibility: hidden;
+  /* transform-origin:left bottom; */
+  /* transform-style: preserve-3d; */
+}
+.book .page img {
+  width: 300px;
+  height: 400px;
+  transform-origin: left bottom;
+  transition-duration: 4s;
+  z-index: 10;
+  position: absolute;
 }
 
-.page:hover{
-    transform: rotateY(180deg);
-
+.page:hover > .book-cover {
+  transform: rotateY(180deg);
 }
-.page-2{
-    background-color: rgba(253, 225, 240, 0.671);
-    height: 400px;
-    width: 100%;
-    border: 1px solid rgba(248, 160, 207, 0.671);;
+.page:hover > .content {
+  transform: translateX(300px)
+
+  
+}
+
+.page-2 {
+  background-color: rgba(253, 225, 240, 1);
+  height: 400px;
+  width: 100%;
+  padding: 10px 7px;
+  line-height: 30px;
+  border-left: 10px solid black;
+  border-right:1px solid rgba(248, 160, 207, 0.671);
+  border-top: 1px solid rgba(248, 160, 207, 0.671);
+  border-bottom: 1px solid rgba(248, 160, 207, 0.671);
+}
+.content {
+  background-color: rgba(253, 225, 240, 1);
+  height: 400px;
+  width: 100%;
+  position: absolute;
+  border: 1px solid rgba(248, 160, 207, 0.671);
+  top: 0px;
+  transform-origin: right bottom;
+  transition-duration: 3s;
+  transition-delay: 1s;
+  padding: 7px;
+}
+
+.page-2 .page-2-text .author{
+    margin-bottom: 20px !important;
+   
+}
+.page-2 .title{
+    font-size: 30px;
+    font-weight: 800;
+    margin-bottom: 0px;
+}
+.book span{
+    font-weight: bold;
 }
