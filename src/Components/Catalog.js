@@ -5,13 +5,13 @@ import axios from 'axios'
 const Catalog = () => {
     const [bookData, setBookData] = useState([])
     const getData = async()=>{
-        const response = await axios.get("http://localhost:3100/api/v2/bookAdd")
+        const response = await axios.get("http://localhost:3100/api/v2/bookDisplay")
         setBookData(response);
         console.log(bookData)
     }
     useEffect(()=>{
         getData();
-    })
+    },[])
   return (
     <div className='catalog'>
         <div className='container'>
