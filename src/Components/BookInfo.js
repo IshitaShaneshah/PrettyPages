@@ -1,5 +1,5 @@
 import React from "react";
-import "../CSS/Temp.css";
+import "../CSS/BookInfo.css";
 import openbook from "../photos/openbook.jpg";
 import book1 from "../photos/book1.jpeg";
 const Temp = () => {
