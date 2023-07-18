@@ -7,11 +7,11 @@ const Schema = new mongoose.Schema({
   password: {
     type: String,
     required: true,
-  },
-  products: {
-    type: String,
-    required: true,
   }
+  // products: {
+  //   type: String,
+  //   required: false,
+  // }
 });
 
 module.exports = mongoose.model("Vendor", Schema);
