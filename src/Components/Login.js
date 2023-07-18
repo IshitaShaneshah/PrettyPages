@@ -1,7 +1,7 @@
 import React,{useState} from 'react'
 import axios from 'axios';
 import "../CSS/Register.css"
-import { exists } from '../backend/models/User_model';
+
 const Login = () => {
   const [user,setUser]=useState({
     email:"",

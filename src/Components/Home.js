@@ -14,11 +14,7 @@ const Home = () => {
     <>
     <Navbar/>
     <Intro/>
-    {/* <WishList/> */}
-    <VendorProducts/>
-    {/* <Catalog/>
-    <PostProduct/>
-    <VendorProducts/> */}
+    {/* <Catalog/> */}
     {/* <BookDetail/> */}
     </>
   )

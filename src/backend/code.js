@@ -2,25 +2,16 @@
 const express = require("express");
 const app = express();
 const cors = require("cors")
+
+//routes require
 const userRoute = require("./routes/userroutes");
 const vendorRoute = require("./routes/veendorroutes")
 app.use(cors());
 app.use(express.json());
+
+//routes call
 app.use("/api/v1", userRoute);
 app.use("/api/v2", vendorRoute)
-
-// app.get("/api/v2/bookAdd", (req,res)=>{
-//   res.send()
-// })
-
-// app.get("/login", (req, res) => {
-//   res.send("login page");
-// });
-
-// app.get("/signup", (req, res) => {
-//   res.send("signup page");
-// });
-
 
 //Database
 const mongoose = require("mongoose");
@@ -35,6 +26,7 @@ mongoose
     console.log("Failed");
   });
 
+  //server run
   app.listen(3100, () => {
     console.log("Server started successfully");
   });

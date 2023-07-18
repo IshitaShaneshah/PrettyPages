@@ -50,7 +50,6 @@ exports.vendorLogin = async (req, res) => {
 };
 
 exports.bookAdd = async (req, res, next) => {
-  console.log(req.body);
   const newBook = new Book({
     author_name: req.body.author_name,
     // image: req.params.image,
@@ -75,6 +74,16 @@ exports.bookAdd = async (req, res, next) => {
       const error = new HttpError("Failed. Try again after some time", 500);
       return next(error);
     }
+  }
+};
+
+exports.booksDisplay = async (req, res, next) => {
+  try {
+    const result = await Book.find();
+    res.status(200).json({ message: result });
+  } catch (err) {
+    const error = new HttpError("Failed. Try again after some time", 500);
+    return next(error);
   }
 };
 
