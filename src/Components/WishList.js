@@ -25,7 +25,20 @@ const WishList = () => {
   ]);
   const wishrow=wishList.map((ele,index)=>{
     return(
-      <></>
+      <>
+        <tr>
+            <th scope="row">1</th>
+            <td className="book-img">
+              <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQsfxrcUtlaLqSTTpA7N9cWKIopvRNtXngM2A&usqp=CAU"/>
+            </td>
+            <td>
+              <ol>
+                <li><span>Title :</span></li>
+              </ol>
+            </td>
+            <td>@mdo</td>
+          </tr>
+      </>
     )
   })
   return (

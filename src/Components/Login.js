@@ -1,4 +1,4 @@
-import React,{useState} from 'react'
+import React,{useEffect, useState} from 'react'
 import axios from 'axios';
 import "../CSS/Register.css"
 
@@ -7,6 +7,11 @@ const Login = () => {
     email:"",
     password:""
   });
+  const[isLogin,setIsLogin]=useState(false);
+
+  useEffect(()=>{
+    localStorage.setItem("Login",isLogin);
+  },[isLogin])
   const onChangeHandler=(event)=>{
     const { name, value } = event.target;
     setUser({ ...user, [name]: value });
@@ -19,6 +24,8 @@ const Login = () => {
         email: user.email, password: user.password
       })
       .then(res =>{
+        isLogin(true);
+        localStorage.setItem("vemail",user.email);
         if(res.data){
           console.log("user login");
         }
