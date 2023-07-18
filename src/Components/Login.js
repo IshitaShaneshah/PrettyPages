@@ -24,7 +24,7 @@ const Login = () => {
         email: user.email, password: user.password
       })
       .then(res =>{
-        isLogin(true);
+        setIsLogin(true);
         localStorage.setItem("vemail",user.email);
         if(res.data){
           console.log("user login");
