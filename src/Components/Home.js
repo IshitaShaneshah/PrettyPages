@@ -8,14 +8,18 @@ import BookDetail from './BookDetail'
 import BookInfo from './BookInfo'
 import VendorProducts from './VendorProducts'
 import PostProduct from './PostProduct'
+import WishList from './WishList'
 const Home = () => {
   return (
     <>
     <Navbar/>
     <Intro/>
-    {/* <Catalog/> */}
+    {/* <WishList/> */}
+    <VendorProducts/>
+    {/* <Catalog/>
+    <PostProduct/>
+    <VendorProducts/> */}
     {/* <BookDetail/> */}
-    <Temp/>
     </>
   )
 }
