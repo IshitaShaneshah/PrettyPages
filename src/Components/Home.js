@@ -5,6 +5,7 @@ import "../CSS/Home.css"
 import Catalog from './Catalog'
 import Intro from "../Components/Intro"
 import BookDetail from './BookDetail'
+import Temp from './Temp'
 const Home = () => {
   return (
     <>
