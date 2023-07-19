@@ -10,6 +10,9 @@ import VendorProducts from './VendorProducts'
 import PostProduct from './PostProduct'
 import WishList from './WishList'
 import Cart from './Cart'
+import Footer from "./Footer"
+import Users from './Users'
+import VendorHome from './VendorHome'
 const Home = () => {
   return (
     <>
@@ -19,13 +22,17 @@ const Home = () => {
     {/* <BookDetail/> */}
     <VendorProducts/>
     {/* <VendorProducts/> */}
+=======
     {/* <Intro/>
     <VendorProducts/>
-    <PostProduct/>
-    <Catalog/> */}
-    <WishList/>
+  <PostProduct/>*/}
+  {/* <Users/> */}
+  <VendorHome/>
+    {/* <Catalog/>  */}
+    {/* <WishList/> */}
     {/* <BookInfo/> */}
     <Cart/>
+>>>>>>> Stashed changes
     </>
   )
 }

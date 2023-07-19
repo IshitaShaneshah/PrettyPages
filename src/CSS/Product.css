@@ -73,6 +73,9 @@
     align-items: center;
 
 }
+.product .product-box .product-card .product-back span{
+    font-weight: bold;
+}
 /* book title */
 .product .product-box .book-title2{
     font-size: large;

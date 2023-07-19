@@ -1,15 +1,16 @@
 import React from "react";
 import "../CSS/Product.css";
-const Product = () => {
-  const book={
-    title:"The Jungle Book",
-    author : "XYZ",
-    category:"fiction",
-    pages:120,
-    genre : "Thriller",
-    price : 45+"$",
-    desc:"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla ac ultricies velit, eu vehicula orci. Vestibulum gravida dapibus elementum. Suspendisse pulvinar convallis nisl, nec sollicitudin eros feugiat imperdiet. Vestibulum at malesuada massa, vel pellentesque dolor. Cras malesuada ex quam, non fermentum elit ornare in."
-  }
+import { Link } from "react-router-dom";
+const Product = (props) => {
+  // const book={
+  //   title:"The Jungle Book",
+  //   author : "XYZ",
+  //   category:"fiction",
+  //   pages:120,
+  //   genre : "Thriller",
+  //   price : 45+"$",
+  //   desc:"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla ac ultricies velit, eu vehicula orci. Vestibulum gravida dapibus elementum. Suspendisse pulvinar convallis nisl, nec sollicitudin eros feugiat imperdiet. Vestibulum at malesuada massa, vel pellentesque dolor. Cras malesuada ex quam, non fermentum elit ornare in."
+  // }
   return (
     <div className="product">
       <div className="product-box">
@@ -17,20 +18,20 @@ const Product = () => {
           <div className="product-front">
             <img
               className="book-img"
-              src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSaGVLNKbby0qadXZY0Xt_5Xb9ZLaWSpvpEEw&usqp=CAU"
-              alt="The jungle Book"
+              src={props.book.image}
+              alt={props.book.title}
             />
           </div>
           <div className="product-back">
-            <div className="book-title">Title : {book.title}</div>
-            <div className="book-author">Author : {book.author}</div>
-            <div className="book-subgenre">Genre : {book.genre}</div>
+            <div className="book-title"><span>Title :</span> {props.book.title}</div>
+            <div className="book-author"><span>Author :</span> {props.book.author_name}</div>
+            <div className="book-subgenre"><span>Genre :</span> {props.book.Genre}</div>
             {/* <div className="book-desc">Desc : Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla ac ultricies velit, eu vehicula orci. Vestibulum gravida dapibus elementum. Suspendisse pulvinar convallis nisl, nec sollicitudin eros feugiat imperdiet. Vestibulum at malesuada massa, vel pellentesque dolor. Cras malesuada ex quam, non fermentum elit ornare in.</div> */}
-            <div className="book-price">Price : {book.price}</div>
-            <a className="know-more" href="/">Know more...</a>
+            <div className="book-price"><span>Price :</span> {props.book.price}</div>
+            <Link className="know-more" to="/productDetails">Know more...</Link>
           </div>
         </div>
-        <div className="book-title2 my-2">The Jungle Book</div>
+        <div className="book-title2 my-2">{props.book.title}</div>
       </div>
       <div className="book-btn">
           <button>
