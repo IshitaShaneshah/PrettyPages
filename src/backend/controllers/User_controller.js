@@ -140,3 +140,8 @@ exports.wishlistAdd = async (res, req, next) => {
     res.status(500).json({ message: "Internal Server Error" });
   }
 };
+
+
+exports.wishlistDisplay = async(req,res,next)=>{
+  
+}

@@ -14,13 +14,11 @@ const Home = () => {
   return (
     <>
     <Navbar/>
-<<<<<<< Updated upstream
     <Intro/>
     {/* <Catalog/> */}
     {/* <BookDetail/> */}
     <VendorProducts/>
     {/* <VendorProducts/> */}
-=======
     {/* <Intro/>
     <VendorProducts/>
     <PostProduct/>
@@ -28,7 +26,6 @@ const Home = () => {
     <WishList/>
     {/* <BookInfo/> */}
     <Cart/>
->>>>>>> Stashed changes
     </>
   )
 }

@@ -1,28 +1,43 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
+import axios from "axios";
 import "../CSS/WishList.css";
 const WishList = () => {
   const [wishList, setWishList] = useState([
-    {
-      title: "The Jungle Book",
-      author: "XYZ",
-      genre: "fiction",
-      pages: 120,
-      subgenre: "Thriller",
-      price: 45 + "$",
-      quantity:12,
-      desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla ac ultricies velit, eu vehicula orci. Vestibulum gravida dapibus elementum. Suspendisse pulvinar convallis nisl, nec sollicitudin eros feugiat imperdiet. Vestibulum at malesuada massa, vel pellentesque dolor. Cras malesuada ex quam, non fermentum elit ornare in.",
-    },
-    {
-      title: "Dictionary",
-      author: "ABC",
-      genre: "fiction",
-      pages: 120,
-      subgenre: "Thriller",
-      price: 45 + "$",
-      quantity:30,
-      desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla ac ultricies velit, eu vehicula orci. Vestibulum gravida dapibus elementum. Suspendisse pulvinar convallis nisl, nec sollicitudin eros feugiat imperdiet. Vestibulum at malesuada massa, vel pellentesque dolor. Cras malesuada ex quam, non fermentum elit ornare in.",
-    },
+    // {
+    //   title: "The Jungle Book",
+    //   author: "XYZ",
+    //   genre: "fiction",
+    //   pages: 120,
+    //   subgenre: "Thriller",
+    //   price: 45 + "$",
+    //   quantity:12,
+    //   desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla ac ultricies velit, eu vehicula orci. Vestibulum gravida dapibus elementum. Suspendisse pulvinar convallis nisl, nec sollicitudin eros feugiat imperdiet. Vestibulum at malesuada massa, vel pellentesque dolor. Cras malesuada ex quam, non fermentum elit ornare in.",
+    // },
+    // {
+    //   title: "Dictionary",
+    //   author: "ABC",
+    //   genre: "fiction",
+    //   pages: 120,
+    //   subgenre: "Thriller",
+    //   price: 45 + "$",
+    //   quantity:30,
+    //   desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla ac ultricies velit, eu vehicula orci. Vestibulum gravida dapibus elementum. Suspendisse pulvinar convallis nisl, nec sollicitudin eros feugiat imperdiet. Vestibulum at malesuada massa, vel pellentesque dolor. Cras malesuada ex quam, non fermentum elit ornare in.",
+    // },
   ]);
+  const [userId, setUserId] = useState(''); 
+  const fetchWishlistItems = () => {
+    // Send a GET request to fetch the user's wishlist items
+    axios.get(`/wishlit/${userId}`)
+      .then((response) => {
+        setWishList(response.data);
+      })
+      .catch((error) => {
+        console.error('Error fetching wishlist items:', error);
+      });
+  };
+  useEffect(()=>{
+    fetchWishlistItems();
+  },[])
   const wishrow=wishList.map((ele,index)=>{
     return(
       <>
