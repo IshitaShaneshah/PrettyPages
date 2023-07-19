@@ -4,7 +4,7 @@ import Home from './Components/Home';
 import  Login from './Components/Login';
 import WishList from './Components/WishList';
 import Cart from './Components/Cart';
-import Temp from './Components/BookInfo';
+import BookInfo from './Components/BookInfo';
 import PostProduct from './Components/PostProduct'
 import Register from './Components/Register';
 
@@ -18,6 +18,7 @@ function App() {
         <Route path="/login" element={<Login/>} />
         <Route path="/register" element={<Register/>} />
         <Route path="/postproduct" element={<PostProduct/>} />
+        <Route path="/productDetails" element={<BookInfo/>}/>
     </Routes>
   </BrowserRouter>
   );
