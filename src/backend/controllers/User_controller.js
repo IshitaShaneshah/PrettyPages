@@ -8,20 +8,20 @@ exports.userSignup = async (req, res, next) => {
   // console.log(req.body)
   const newUser = new User({
     email: req.body.email,
-    password: req.body.password
-  })
+    password: req.body.password,
+  });
 
-//   if (User.findOne({ email: req.body.email })) {
-//     res.json({ message: "user already exists" });
-// }   else {
-    try {
-      await newUser.save();
-      res.json({ message: "User signed in" });
-    } catch (err) {
-      console.log(err);
-      const error = new HttpError("Signup failed", 500);
-      return next(error);
-    }
+  //   if (User.findOne({ email: req.body.email })) {
+  //     res.json({ message: "user already exists" });
+  // }   else {
+  try {
+    await newUser.save();
+    res.json({ message: "User signed in" });
+  } catch (err) {
+    console.log(err);
+    const error = new HttpError("Signup failed", 500);
+    return next(error);
+  }
   // }
 };
 exports.userLogin = async (req, res) => {
@@ -102,4 +102,41 @@ exports.bookSearchBySub_genre = async (res, req) => {
       const error = new HttpError("Book not found", 200);
       throw error;
     });
+};
+
+exports.wishlistAdd = async (res, req, next) => {
+  const { title, userId } = req.body; 
+  console.log("hi",req.body)
+  try {
+    // Find the book details based on the title from the "Books" model
+    const book = await Book.findOne({ title });
+
+    if (!book) {
+      return res.status(404).json({ message: "Book not found" });
+    }
+
+    // Create a new wishlist item with a reference to the book and added date
+    const newItem = {
+      book: book._id,
+      addedOn: Date.now(),
+    };
+
+    // Find the user's wishlist
+    const user = await User.findById(userId);
+
+    if (!user) {
+      return res.status(404).json({ message: "User not found" });
+    }
+
+    // Add the new item to the user's wishlist
+    user.wishlist.push(newItem);
+
+    // Save the updated user with the new wishlist item
+    await user.save();
+
+    res.status(201).json({ message: "Book added to wishlist successfully" });
+  } catch (error) {
+    console.error("Error adding book to wishlist:", error);
+    res.status(500).json({ message: "Internal Server Error" });
+  }
 };

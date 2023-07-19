@@ -27,12 +27,10 @@ exports.vendorSignup = async (req, res, next) => {
 };
 
 exports.vendorLogin = async (req, res) => {
-  console.log(req.body);
   const { email, password } = req.body;
-  console.log(req.body)
   Vendor.findOne({ email: email })
     .then((vendor) => {
-      console.log(vendor);
+      // console.log(vendor);
       console.info(`vendor with email : ${email} was found successfully`);
 
       if (password === vendor.password) {
@@ -86,6 +84,19 @@ exports.booksDisplay = async (req, res, next) => {
     return next(error);
   }
 };
+
+exports.bookCatalog = async(req,res,next)=>{
+  try {
+    const {name, author, price, category, genre, quantity, vmail} = req.body
+    // console.log(req.params);
+    const cata= await Book.find({vendor_mail: req.body.vendor_mail})
+    res.status(200).json({message: cata})
+    console.log(cata)
+  } catch (err) {
+    const error = new HttpError("Failed. Try again after some time", 500);
+    return next(error);
+  }
+}
 
 exports.bookUpdate = async (req, res, next) => {
   try {

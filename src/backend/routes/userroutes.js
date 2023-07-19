@@ -12,5 +12,6 @@ router.get("/book/:title", user_controller.bookSearchByTitle);
 router.get("/book/:genre", user_controller.bookSearchByGenre);
 router.get("/book/:author", user_controller.bookSearchByAuthor);
 router.get("/book/:sub-genre", user_controller.bookSearchBySub_genre);
+router.post("wishlist/add", user_controller.wishlistAdd);
 
 module.exports = router;
