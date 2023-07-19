@@ -11,3 +11,36 @@
     margin: 0px 5px;
     margin-bottom: 10px;
 }
+.wishlist .book-img img{
+    height: 150px;
+    width:100px;
+}
+.wishlist .table{
+  counter-reset: Serial;
+}
+tr td:first-child:before {
+    counter-increment: Serial;
+    content: counter(Serial);
+}
+.wishlist ul li{
+    list-style:none ;
+}
+.wishlist-btn button{
+    margin: 10px 15px;
+    background-color: rgba(241, 173, 255, 0.829);
+    /* width: 100px; */
+    padding: 0px 10px;
+    height: 40px;
+    border-radius: 5px;
+    transform:scale(1);
+    transition-duration: 0.5s;
+    border: 1px solid rgba(241, 173, 255, 0.829);
+    box-shadow: 2px 2px 10px rgb(148, 104, 156);
+}
+.wishlist-btn button:hover{
+    background-color: rgb(72, 15, 85);
+    box-shadow: 2px 2px 10px rgba(88, 46, 97, 0.829);
+    color:white;
+    transform:scale(1.2);
+
+}
