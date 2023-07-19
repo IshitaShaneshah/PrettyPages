@@ -9,14 +9,26 @@ import BookInfo from './BookInfo'
 import VendorProducts from './VendorProducts'
 import PostProduct from './PostProduct'
 import WishList from './WishList'
+import Cart from './Cart'
 const Home = () => {
   return (
     <>
     <Navbar/>
+<<<<<<< Updated upstream
     <Intro/>
     {/* <Catalog/> */}
     {/* <BookDetail/> */}
     <VendorProducts/>
+    {/* <VendorProducts/> */}
+=======
+    {/* <Intro/>
+    <VendorProducts/>
+    <PostProduct/>
+    <Catalog/> */}
+    <WishList/>
+    {/* <BookInfo/> */}
+    <Cart/>
+>>>>>>> Stashed changes
     </>
   )
 }

@@ -27,16 +27,26 @@ const WishList = () => {
     return(
       <>
         <tr>
-            <th scope="row">1</th>
+            <td scope="row"></td>
             <td className="book-img">
               <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQsfxrcUtlaLqSTTpA7N9cWKIopvRNtXngM2A&usqp=CAU"/>
             </td>
             <td>
-              <ol>
-                <li><span>Title :</span></li>
-              </ol>
+              <ul>
+                <li><span>Title :{ele.title}</span></li>
+                <li><span>Author :{ele.author}</span></li>
+                <li><span>Pages :{ele.pages}</span></li>
+                <li><span>Category :{ele.genre}</span></li>
+                <li><span>Genre :{ele.subgenre}</span></li>
+                <li><span>Price :{ele.price}</span></li>
+              </ul>
             </td>
-            <td>@mdo</td>
+            <td>
+              <div className="wishlist-btn">
+                <button>Add to Cart</button>
+                <button>Delete</button>
+              </div>
+            </td>
           </tr>
       </>
     )
@@ -66,29 +76,7 @@ const WishList = () => {
           </tr>
         </thead>
         <tbody class="table-group-divider">
-          <tr>
-            <th scope="row">1</th>
-            <td className="book-img">
-              <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQsfxrcUtlaLqSTTpA7N9cWKIopvRNtXngM2A&usqp=CAU"/>
-            </td>
-            <td>
-              <ol>
-                <li><span>Title :</span></li>
-              </ol>
-            </td>
-            <td>@mdo</td>
-          </tr>
-          <tr>
-            <th scope="row">2</th>
-            <td>Jacob</td>
-            <td>Thornton</td>
-            <td>@fat</td>
-          </tr>
-          <tr>
-            <th scope="row">3</th>
-            <td colspan="2">Larry the Bird</td>
-            <td>@twitter</td>
-          </tr>
+        {wishrow}
         </tbody>
       </table>
     </div>
