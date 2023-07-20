@@ -21,7 +21,7 @@ const Login = () => {
     event.preventDefault();
     if (user.email && user.password) {
       axios
-        .post("http://localhost:3100/api/v2/login", {
+        .post("http://localhost:3100/api/v1/login", {
           email: user.email,
           password: user.password,
         })

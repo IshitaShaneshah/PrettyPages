@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import "../CSS/WishList.css";
 const WishList = () => {
-  const [wishList, setWishList] = useState([
+  const [wishList, setWishList] = useState([])
     // {
     //   title: "The Jungle Book",
     //   author: "XYZ",
@@ -23,11 +23,13 @@ const WishList = () => {
     //   quantity:30,
     //   desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla ac ultricies velit, eu vehicula orci. Vestibulum gravida dapibus elementum. Suspendisse pulvinar convallis nisl, nec sollicitudin eros feugiat imperdiet. Vestibulum at malesuada massa, vel pellentesque dolor. Cras malesuada ex quam, non fermentum elit ornare in.",
     // },
-  ]);
+  // ]);
   const [userId, setUserId] = useState(''); 
+  console.log(userId)
   const fetchWishlistItems = () => {
+    console.log(userId)
     // Send a GET request to fetch the user's wishlist items
-    axios.get(`/wishlit/${userId}`)
+    axios.get(`/wishlist/:${userId}`)
       .then((response) => {
         setWishList(response.data);
       })

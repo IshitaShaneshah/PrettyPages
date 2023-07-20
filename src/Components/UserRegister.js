@@ -16,7 +16,7 @@ const Register = () => {
     event.preventDefault();
     if(user.email && user.password && user.repassword===user.password){
         alert("You have been register :)");
-      axios.post("http://localhost:3100/api/v2/signup",{
+      axios.post("http://localhost:3100/api/v1/signup",{
         email: user.email,
         password: user.password
       }).then(

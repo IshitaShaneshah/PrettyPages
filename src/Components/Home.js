@@ -20,7 +20,7 @@ const Home = () => {
     <Intro/>
     {/* <Catalog/> */}
     {/* <BookDetail/> */}
-    <VendorProducts/>
+    {/* <VendorProducts/> */}
     {/* <VendorProducts/> */}
 =======
     {/* <Intro/>
@@ -29,7 +29,7 @@ const Home = () => {
   {/* <Users/> */}
   <VendorHome/>
     {/* <Catalog/>  */}
-    {/* <WishList/> */}
+    <WishList/>
     {/* <BookInfo/> */}
     <Cart/>
 >>>>>>> Stashed changes
