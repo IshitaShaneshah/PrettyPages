@@ -32,7 +32,7 @@ const Home = () => {
     <WishList/>
     {/* <BookInfo/> */}
     <Cart/>
->>>>>>> Stashed changes
+{/* >>>>>>> Stashed changes */}
     </>
   )
 }

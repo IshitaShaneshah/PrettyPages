@@ -105,43 +105,56 @@ exports.bookSearchBySub_genre = async (res, req) => {
 };
 
 exports.wishlistAdd = async (res, req, next) => {
-  const { title, userId } = req.body; 
-  console.log("hi",req.body)
-  try {
-    // Find the book details based on the title from the "Books" model
-    const book = await Book.findOne({ title });
+  // const { title, userId } = req.body; 
+  // console.log("hi",req.body)
+  // try {
+  //   // Find the book details based on the title from the "Books" model
+  //   const book = await Book.findOne({ title });
 
-    if (!book) {
-      return res.status(404).json({ message: "Book not found" });
-    }
+  //   if (!book) {
+  //     return res.status(404).json({ message: "Book not found" });
+  //   }
 
-    // Create a new wishlist item with a reference to the book and added date
-    const newItem = {
-      book: book._id,
-      addedOn: Date.now(),
-    };
+  //   // Create a new wishlist item with a reference to the book and added date
+  //   const newItem = {
+  //     book: book._id,
+  //     addedOn: Date.now(),
+  //   };
 
-    // Find the user's wishlist
-    const user = await User.findById(userId);
+  //   // Find the user's wishlist
+  //   const user = await User.findById(userId);
 
-    if (!user) {
-      return res.status(404).json({ message: "User not found" });
-    }
+  //   if (!user) {
+  //     return res.status(404).json({ message: "User not found" });
+  //   }
 
-    // Add the new item to the user's wishlist
-    user.wishlist.push(newItem);
+  //   // Add the new item to the user's wishlist
+  //   user.wishlist.push(newItem);
 
-    // Save the updated user with the new wishlist item
-    await user.save();
+  //   // Save the updated user with the new wishlist item
+  //   await user.save();
 
-    res.status(201).json({ message: "Book added to wishlist successfully" });
-  } catch (error) {
-    console.error("Error adding book to wishlist:", error);
-    res.status(500).json({ message: "Internal Server Error" });
-  }
+  //   res.status(201).json({ message: "Book added to wishlist successfully" });
+  // } catch (error) {
+  //   console.error("Error adding book to wishlist:", error);
+  //   res.status(500).json({ message: "Internal Server Error" });
+  // }
 };
 
 
 exports.wishlistDisplay = async(req,res,next)=>{
-  
+//   const { userId } = req.params;
+//   try {
+//     // Find the user's wishlist and populate the book field
+//     const wishlist = await Wishlist.findOne({ owner: userId }).populate('wishlist.book');
+
+//     if (!wishlist) {
+//       return res.status(404).json({ message: 'Wishlist not found' });
+//     }
+
+//     res.status(200).json(wishlist.items);
+//   } catch (error) {
+//     console.error('Error fetching wishlist items:', error);
+//     res.status(500).json({ message: 'Internal Server Error' });
+// }
 }
