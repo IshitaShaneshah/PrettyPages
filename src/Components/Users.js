@@ -3,6 +3,7 @@ import "../CSS/Users.css"
 import carousel2 from "../photos/carousel2.jpg"
 import carousel1 from "../photos/carousel1.jpg"
 import carousel3 from "../photos/carousel3.gif"
+import { Link } from 'react-router-dom'
 const Users = () => {
   return (
     <>
@@ -30,10 +31,10 @@ const Users = () => {
     <div className='Users container'>
     <div className='row'>
         <div className='col-md-6'>
-
+        <Link to="/user">Buyer</Link>
         </div>
         <div className='col-md-6'>
-
+        <Link to="/vendor">Vendor</Link>
         </div>
     </div>
     </div>

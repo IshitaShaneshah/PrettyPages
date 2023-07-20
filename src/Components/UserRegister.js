@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import axios from 'axios';
 import "../CSS/Register.css"
+import { Link } from 'react-router-dom';
 const Register = () => {
   const [user,setUser]=useState({
     email:"",
@@ -14,10 +15,17 @@ const Register = () => {
   const submitHandler=(event)=>{
     event.preventDefault();
     if(user.email && user.password && user.repassword===user.password){
+        alert("You have been register :)");
       axios.post("http://localhost:3100/api/v2/signup",{
         email: user.email,
         password: user.password
-      }).then(console.log(user))
+      }).then(
+        setUser({
+            email:"",
+            password:"",
+            repassword:""
+        })
+      )
     }
     else{
       alert("Invalid Credentials")
@@ -47,7 +55,7 @@ const Register = () => {
         <button type="submit" class="btn btn-light" >Register</button>
         </div>
      </form>
-     <div className='login-reg'>Already have an account? <a href="/">Login</a></div>
+     <div className='login-reg'>Already have an account? <Link to="/user">Login</Link></div>
     </div>
     </div>
   )
