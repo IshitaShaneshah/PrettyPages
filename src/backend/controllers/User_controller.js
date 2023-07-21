@@ -4,6 +4,7 @@ const HttpError = require("../Utils/httpError");
 const User = require("../models/User_model");
 const Book = require("../models/books_model");
 
+//User Signup
 exports.userSignup = async (req, res, next) => {
   // console.log(req.body)
   const newUser = new User({
@@ -11,9 +12,9 @@ exports.userSignup = async (req, res, next) => {
     password: req.body.password,
   });
 
-  //   if (User.findOne({ email: req.body.email })) {
-  //     res.json({ message: "user already exists" });
-  // }   else {
+    if (User.findOne({ email: req.body.email })) {
+      res.json({ message: "user already exists" });
+  }   else {
   try {
     await newUser.save();
     res.json({ message: "User signed in" });
@@ -22,8 +23,10 @@ exports.userSignup = async (req, res, next) => {
     const error = new HttpError("Signup failed", 500);
     return next(error);
   }
-  // }
+  }
 };
+
+//User Login
 exports.userLogin = async (req, res) => {
   const { email, password } = req.body;
   User.findOne({ email: email })
@@ -45,6 +48,7 @@ exports.userLogin = async (req, res) => {
     });
 };
 
+//Catalog book display
 exports.bookDisplay = async (res, req, next) => {
   const books = "";
   try {
@@ -56,53 +60,53 @@ exports.bookDisplay = async (res, req, next) => {
   }
 };
 
-exports.bookSearchByTitle = async (res, req) => {
-  const { name } = req.body;
-  Book.findOne({ title: name })
-    .then((book) => {
-      return res.status(200).send(book);
-    })
-    .catch((err) => {
-      const error = new HttpError("Book not found", 200);
-      throw error;
-    });
-};
+// exports.bookSearchByTitle = async (res, req) => {
+//   const { name } = req.body;
+//   Book.findOne({ title: name })
+//     .then((book) => {
+//       return res.status(200).send(book);
+//     })
+//     .catch((err) => {
+//       const error = new HttpError("Book not found", 200);
+//       throw error;
+//     });
+// };
 
-exports.bookSearchByAuthor = async (res, req) => {
-  const { au_name } = req.body;
-  Book.findOne({ author_name: au_name })
-    .then((book) => {
-      return res.status(200).send(book);
-    })
-    .catch((err) => {
-      const error = new HttpError("Book not found", 200);
-      throw error;
-    });
-};
+// exports.bookSearchByAuthor = async (res, req) => {
+//   const { au_name } = req.body;
+//   Book.findOne({ author_name: au_name })
+//     .then((book) => {
+//       return res.status(200).send(book);
+//     })
+//     .catch((err) => {
+//       const error = new HttpError("Book not found", 200);
+//       throw error;
+//     });
+// };
 
-exports.bookSearchByGenre = async (res, req) => {
-  const { genre } = req.body;
-  Book.findOne({ Genre: genre })
-    .then((book) => {
-      return res.status(200).send(book);
-    })
-    .catch((err) => {
-      const error = new HttpError("Book not found", 200);
-      throw error;
-    });
-};
+// exports.bookSearchByGenre = async (res, req) => {
+//   const { genre } = req.body;
+//   Book.findOne({ Genre: genre })
+//     .then((book) => {
+//       return res.status(200).send(book);
+//     })
+//     .catch((err) => {
+//       const error = new HttpError("Book not found", 200);
+//       throw error;
+//     });
+// };
 
-exports.bookSearchBySub_genre = async (res, req) => {
-  const { subGenre } = req.body;
-  Book.findOne({ sub_genre: subGenre })
-    .then((book) => {
-      return res.status(200).send(book);
-    })
-    .catch((err) => {
-      const error = new HttpError("Book not found", 200);
-      throw error;
-    });
-};
+// exports.bookSearchBySub_genre = async (res, req) => {
+//   const { subGenre } = req.body;
+//   Book.findOne({ sub_genre: subGenre })
+//     .then((book) => {
+//       return res.status(200).send(book);
+//     })
+//     .catch((err) => {
+//       const error = new HttpError("Book not found", 200);
+//       throw error;
+//     });
+// };
 
 exports.wishlistAdd = async (res, req, next) => {
   // const { title, userId } = req.body; 
