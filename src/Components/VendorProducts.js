@@ -2,6 +2,7 @@ import React, { useState,useEffect } from "react";
 import "../CSS/VendorProduct.css";
 import axios from "axios";
 const VendorProducts = () => {
+  const [vemail,setVemail]=useState("");
   const [book, setBook] = useState([
     {
       title: "The Jungle Book",
@@ -24,6 +25,11 @@ const VendorProducts = () => {
       desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla ac ultricies velit, eu vehicula orci. Vestibulum gravida dapibus elementum. Suspendisse pulvinar convallis nisl, nec sollicitudin eros feugiat imperdiet. Vestibulum at malesuada massa, vel pellentesque dolor. Cras malesuada ex quam, non fermentum elit ornare in.",
     },
   ]);
+  useEffect(()=>{
+    setVemail(localStorage.getItem("vemail"));
+  },[])
+  console.log("kk",vemail);
+
 //   const getData = async()=>{
 //     const response = await axios.get("http://localhost:3100/api/v2/catalog")
 //     // setBook(response);
