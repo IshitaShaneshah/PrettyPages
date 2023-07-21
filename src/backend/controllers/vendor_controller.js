@@ -125,3 +125,18 @@ exports.bookUpdate = async (req, res, next) => {
     return next(error);
   }
 };
+
+
+exports.myBooks = async(req,res,next) =>{
+  const {vemail} = req.body;
+  // console.log(vemail)
+  const mail= Book.find({vendor_mail : vemail})
+  try {
+    // console.log(vemail)
+    console.log(mail)
+  } catch (err) {
+    console.log(err);
+    const error = new HttpError("Failed. Try again after some time", 500);
+    return next(error);
+  }
+}

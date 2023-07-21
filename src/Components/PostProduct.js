@@ -103,7 +103,7 @@ const PostProduct = () => {
           Genre: bookDetails.genre,
           sub_genre: bookDetails.subgenre,
           pages: bookDetails.pages,
-          vendor_mail: "dhfdv",
+          vendor_mail:localStorage.getItem('vemail'),
           price: bookDetails.price,
           quantity: bookDetails.quantity
        } )

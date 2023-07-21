@@ -10,6 +10,6 @@ router.post("/bookAdd", vendor_controller.bookAdd);
 router.get("/bookDisplay", vendor_controller.booksDisplay)
 router.get("/catalog", vendor_controller.bookCatalog);
 router.put("/updateBookDetails/:id", vendor_controller.bookUpdate);
-
+router.post("/vendorcatalog", vendor_controller.myBooks)
 
 module.exports = router;

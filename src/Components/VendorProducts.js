@@ -27,8 +27,14 @@ const VendorProducts = () => {
   ]);
   useEffect(()=>{
     setVemail(localStorage.getItem("vemail"));
-  },[])
-  console.log("kk",vemail);
+    if(vemail){
+      axios.post("http://localhost:3100/api/v2/vendorcatalog",{
+        vemail: vemail
+      })
+    }
+   
+  
+  })
 
 //   const getData = async()=>{
 //     const response = await axios.get("http://localhost:3100/api/v2/catalog")
