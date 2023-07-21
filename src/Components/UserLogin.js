@@ -9,10 +9,20 @@ const Login = () => {
     password: "",
   });
   const [isLogin, setIsLogin] = useState(false);
+  const [response,setResponse]=useState(false);
 
-  useEffect(() => {
-    localStorage.setItem("ULogin", isLogin);
-  }, [isLogin]);
+  useEffect(()=>{
+    const log=localStorage.getItem("ULogin");
+    setIsLogin(log);
+  },[])
+
+  useEffect(()=>{
+    if(response){
+      setIsLogin(true);
+      localStorage.setItem("ULogin",true);
+      localStorage.setItem("uemail",user.email)
+    }
+  },[response])
   const onChangeHandler = (event) => {
     const { name, value } = event.target;
     setUser({ ...user, [name]: value });
@@ -26,22 +36,28 @@ const Login = () => {
           password: user.password,
         })
         .then((res) => {
-          setIsLogin(true);
-          localStorage.setItem("uemail", user.email);
-          if (res.data) {
-            console.log("user login");
-          } else {
-            console.log("sign up required");
-          }
+          setResponse(res);
+          // console.log(res);
+          // if (res.data) {
+          //   console.log("user login");
+          // } else {
+          //   console.log("sign up required");
+          // }
         });
     } else {
       alert("Invalid Credentials");
     }
   };
+
+    const logoutHandler=()=>{
+    setIsLogin(false);
+    localStorage.removeItem("ULogin");
+    localStorage.removeItem("uemail");
+  }
   return (
     <>
-      {isLogin === true ? (
-        <UserHome />
+      {isLogin ? (
+        <UserHome logoutHandler={logoutHandler}/>
       ) : (
         <div className="register-background">
           <div className="register">

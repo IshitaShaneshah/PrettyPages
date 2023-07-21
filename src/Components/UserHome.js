@@ -1,40 +1,34 @@
 import React from 'react'
-import Navbar from './Navbar'
-// import Product from './Product'
-import "../CSS/Home.css"
-import Catalog from './Catalog'
-import Intro from "./Intro"
-import BookDetail from './BookDetail'
-import BookInfo from './BookInfo'
-import VendorProducts from './VendorProducts'
-import PostProduct from './PostProduct'
+import "../CSS/UserHome.css"
+import UserNavbar from './UserNavbar'
+import UserFooter from './UserFooter'
+import Catalog from "./Catalog"
+import { useState } from 'react'
+import UserMain from './UserMain'
 import WishList from './WishList'
 import Cart from './Cart'
-import Footer from "./Footer"
-import Users from './Users'
-import VendorHome from './VendorHome'
-const Home = () => {
+import BookInfo from "./BookInfo"
+import PostProduct from './PostProduct'
+import VendorProducts from './VendorProducts'
+const UserHome = (props) => {
+  const[toggle,setToggle]=useState(0);
+  const toggleHandler=(value)=>{
+    setToggle(value);
+    console.log(value);
+}
   return (
     <>
-    <Navbar/>
-
-    <Intro/>
-    {/* <Catalog/> */}
-    {/* <BookDetail/> */}
-    <VendorProducts/>
-    {/* <VendorProducts/> */}
-    {/* <Intro/>
-    <VendorProducts/>
-  <PostProduct/>*/}
-  {/* <Users/> */}
-  <VendorHome/>
-    {/* <Catalog/>  */}
-    {/* <WishList/> */}
-    {/* <BookInfo/> */}
-    {/* <Cart/> */}
-    <Footer/>
+    <UserNavbar user="buyer" toggleHandler={toggleHandler} logoutHandler={props.logoutHandler}/>
+    {      
+      toggle===1?<Catalog/>:
+      toggle===2?<WishList/>:
+      toggle===3?<Cart/>:
+      <UserMain/>
+    }
+    
+    <UserFooter user="buyer" toggleHandler={toggleHandler} logoutHandler={props.logoutHandler}/>
     </>
   )
 }
 
-export default Home
+export default UserHome

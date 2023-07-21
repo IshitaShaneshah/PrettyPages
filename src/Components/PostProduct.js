@@ -137,7 +137,7 @@ const PostProduct = () => {
         <form className="row justify-content-center" onSubmit={submitHandler}>
           <div className="col-md-6 col-sm-6 section1 ">
             <div className="productFields">
-              <p className="my-1">Choose a file to upload book picture</p>
+              <p className="my-1 choose-file-label">Choose a file to upload book picture</p>
               <label className="choosefile" for="bimg">
                 Upload Image
               </label>

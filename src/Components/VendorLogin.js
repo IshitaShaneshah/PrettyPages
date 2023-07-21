@@ -10,10 +10,20 @@ const Login = () => {
     password:""
   });
   const[isLogin,setIsLogin]=useState(false);
+  const [response,setResponse]=useState(false);
+  useEffect(()=>{
+    const log=localStorage.getItem("VLogin");
+    setIsLogin(log);
+  },[])
 
   useEffect(()=>{
-    localStorage.setItem("VLogin",isLogin);
-  },[isLogin])
+    if(response){
+      setIsLogin(true);
+      localStorage.setItem("VLogin",true);
+      localStorage.setItem("vemail",user.email)
+    }
+  },[response])
+
   const onChangeHandler=(event)=>{
     const { name, value } = event.target;
     setUser({ ...user, [name]: value });
@@ -26,14 +36,16 @@ const Login = () => {
         email: user.email, password: user.password
       })
       .then(res =>{
-        setIsLogin(true);
-        localStorage.setItem("vemail",user.email);
-        if(res.data){
-          console.log("user login");
-        }
-        else{
-          console.log("sign up required");
-        }
+        setResponse(res);
+
+        // setIsLogin(true);
+        // localStorage.setItem("vemail",user.email);
+        // if(res.data){
+        //   console.log("user login");
+        // }
+        // else{
+        //   console.log("sign up required");
+        // }
       })
       
     }
@@ -42,11 +54,16 @@ const Login = () => {
     }
 
   }
+  const logoutHandler=()=>{
+    setIsLogin(false);
+    localStorage.removeItem("VLogin");
+    localStorage.removeItem("vemail");
+  }
   return (
     <>
     {
-      isLogin===true?
-      <VendorHome/>
+      isLogin?
+      <VendorHome logoutHandler={logoutHandler}/>
       :
       <div className='register-background'>
       <div className='register'>

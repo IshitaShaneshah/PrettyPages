@@ -1,8 +1,24 @@
 .footer{
-    background-color:brown;
+    background-color:rgb(17, 17, 17);
+    color:wheat;
+    padding: 5vh 5vw;
+}
+.footer .heading{
+    color:#ffd60a;
 }
 .footer col{
-    border:1px solid black;
+}
+.footer ul li{
+    list-style: none;
+}
+.footer a{
+    text-decoration: none;
+    color:inherit;
+}
+.footer a svg{
+    padding-right: 5px;
 }
 
-
+.footer a:hover{
+    color:#247ce0a6;
+}

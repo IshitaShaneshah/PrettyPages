@@ -1,0 +1,32 @@
+.mynav{
+   background-color:#0a3464;
+   color:wheat;
+}
+.mynav .navbar-nav .nav-item a{
+   color:inherit;
+   font-size: 20px;
+}
+.mynav .navbar-nav .nav-item a:hover{
+   color:#ffd60a;
+}
+
+.mynav{
+   padding: 0px !important;
+}
+.mynav .navbar-brand img{
+   height: 80px;
+}
+.mynav .logout a{
+   color:#ffd60a;
+   text-decoration: none;
+   font-size: larger;
+}
+.mynav .logout svg{
+   padding: 5px;
+   height: 30px;
+   width: 30px;
+}  
+
+.mynav .navbar-toggler{
+   background-color: #ffd60a;
+}

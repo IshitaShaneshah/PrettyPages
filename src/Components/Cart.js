@@ -88,7 +88,7 @@ const Cart = () => {
       </div>
       <table class="table ">
         <thead>
-          <tr className="table-dark">
+          <tr className="table-head-col">
             <th scope="col">Sno.</th>
             <th scope="col">Book</th>
             <th scope="col">Book Details</th>

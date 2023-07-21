@@ -32,6 +32,7 @@ const Product = (props) => {
           </div>
         </div>
         <div className="book-title2 my-2">{props.book.title}</div>
+        <div className="book-price2"><span>Price : </span>{props.book.price} Rs.</div>
       </div>
       <div className="book-btn">
           <button>
