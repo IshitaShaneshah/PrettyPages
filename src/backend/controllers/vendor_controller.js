@@ -2,6 +2,7 @@ const HttpError = require("../Utils/httpError");
 
 const Vendor = require("../models/vendor_model");
 const Book = require("../models/books_model");
+var ven_mail = 0;
 
 exports.vendorSignup = async (req, res, next) => {
   console.log(req.body);
@@ -60,19 +61,15 @@ exports.bookAdd = async (req, res, next) => {
     price: req.body.price,
     quantity: req.body.quantity,
   });
-
-  if (Book.findOne({ title: req.body.title })) {
-    res.json({ message: "Book already exists" });
-  } else {
     try {
       await newBook.save();
+      console.log("Book added")
       res.json({ message: "Book added" });
     } catch (err) {
       console.log(err);
       const error = new HttpError("Failed. Try again after some time", 500);
       return next(error);
     }
-  }
 };
 
 exports.booksDisplay = async (req, res, next) => {
@@ -88,9 +85,10 @@ exports.booksDisplay = async (req, res, next) => {
 exports.bookCatalog = async(req,res,next)=>{
   try {
     const {name, author, price, category, genre, quantity, vmail} = req.body
-    // console.log(req.params);
-    const cata= await Book.find({vendor_mail: req.body.vendor_mail})
-    res.status(200).json({message: cata})
+    console.log("hiii")
+    console.log(vmail);
+    const cata= await Book.find({vendor_mail: ven_mail})
+    // res.status(200).json({message: cata})
     console.log(cata)
   } catch (err) {
     const error = new HttpError("Failed. Try again after some time", 500);
@@ -130,10 +128,11 @@ exports.bookUpdate = async (req, res, next) => {
 exports.myBooks = async(req,res,next) =>{
   const {vemail} = req.body;
   // console.log(vemail)
-  const mail= Book.find({vendor_mail : vemail})
+  ven_mail = JSON.stringify(vemail);
+  // const mail= Book.find({vendor_mail: vemail})
   try {
     // console.log(vemail)
-    console.log(mail)
+    // return mail;
   } catch (err) {
     console.log(err);
     const error = new HttpError("Failed. Try again after some time", 500);

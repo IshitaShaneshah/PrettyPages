@@ -31,21 +31,22 @@ const VendorProducts = () => {
       axios.post("http://localhost:3100/api/v2/vendorcatalog",{
         vemail: vemail
       })
+      console.log(vemail);
     }
-   
-  
+    // const response = axios.get("http://localhost:3100/api/v2/vendorcatalog")
+    //   console.log(response)  
   })
 
-//   const getData = async()=>{
-//     const response = await axios.get("http://localhost:3100/api/v2/catalog")
-//     // setBook(response);
-//     console.log(response)
-//     // console.log("hoii")
-// }
-//     useEffect(()=>{
-//       // console.log("hoo")
-//       getData();
-//     },[]) 
+  const getData = async()=>{
+    const response = await axios.get("http://localhost:3100/api/v2/catalog")
+    setBook(response);
+    console.log(response)
+    console.log("hoii")
+}
+    useEffect(()=>{
+      console.log("hoo")
+      getData();
+    },[]) 
   const rowdata = book.map((ele, index) => {
     return (
       <tr>
