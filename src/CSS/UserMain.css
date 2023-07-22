@@ -1,44 +1,114 @@
-vendorHome{
-    padding-top: 30px;
-   
+.buyerHome {
+  padding-top: 30px;
 }
-.vendorHome  .heading{
-    font-size: 40px;
-    font-weight: 600;
+.buyerHome .heading {
+  font-size: 40px;
+  font-weight: 600;
 }
 /* vendor Intro */
-.vendorHomeIntro{
-    background-color: #0a34643f;
-    padding: 10px;
-    margin-bottom: 10vh;
+.buyerHomeIntro {
+  background-color: #0a34643f;
+  padding: 10px;
+  margin-bottom: 10vh;
 }
-.vendorHome .vendorHomeIntro .heading{
+.buyerHome .buyerHomeIntro .heading {
+  color: #0a3464;
+  /* color:rgba(88, 46, 97, 0.829); */
+}
+.buyerHome .buyerHomeIntro .buyerHome-btn {
+  margin: 10px 15px;
+  /* width: 100px; */
+  padding: 0px 10px;
+  height: 40px;
+  border-radius: 5px;
+  transform: scale(1);
+  transition-duration: 0.5s;
+  background-color: #f7b801;
+  border: 1px solid #f7b801;
+  box-shadow: 2px 2px 10px #58564e;
+}
+.buyerHome .buyerHomeIntro .buyerHome-btn:hover {
+  background-color: black;
+  border: 1px solid black;
+  /* box-shadow: 2px 2px 10px rgba(88, 46, 97, 0.829); */
+  color: #f7b801;
+  transform: scale(1.2);
+}
+.sell-book-img img {
+  width: 100%;
+  height: 300px;
+}
 
-    color:#0a3464;
-    /* color:rgba(88, 46, 97, 0.829); */
-}
-.vendorHome .vendorHomeIntro .vendorHome-btn{
-    margin: 10px 15px;
-   
-    /* width: 100px; */
-    padding: 0px 10px;
-    height: 40px;
-    border-radius: 5px;
-    transform:scale(1);
-    transition-duration: 0.5s;
-    background-color: #f7b801;
-    border: 1px solid #f7b801;
-    box-shadow: 2px 2px 10px #58564e;
-}
-.vendorHome .vendorHomeIntro .vendorHome-btn:hover{
-    background-color: black;
-    border: 1px solid black;
-    /* box-shadow: 2px 2px 10px rgba(88, 46, 97, 0.829); */
-    color:#f7b801;
-    transform:scale(1.2);
+/* vendor services */
 
+.userGenre {
+  background-image: url("../photos/servicesbg.jpg");
+  height: 100vh;
+  /* background-color:#222222; */
+  background-attachment: fixed;
+  background-position: center center;
+  padding-top: 5vh;
 }
-.sell-book-img img{
-    width: 100%;
-    height: 300px;
+.userGenre a {
+  text-decoration: none;
+  color: inherit;
 }
+.userGenre .genre {
+  /* background-color: #f7b801; */
+  /* border:2px solid black; */
+  font-size: 20px;
+  font-weight: bold;
+  text-align: center;
+  /* height: 100px; */
+  /* padding: 30px 10px; */
+  /* margin:10px 0px; */
+}
+
+.userGenre .heading {
+  color: #f7b801;
+  text-align: center;
+  font-size: 50px;
+  margin-bottom: 5%;
+}
+
+/* collage */
+.box {
+  background-color: #f7b801;
+  margin-bottom: 20px;
+  box-shadow: 2px 2px 10px #58564e;
+  background-size: cover;
+  background-repeat: no-repeat;
+  padding: 3%;
+  font-size: larger;
+}
+.box1 {
+  height: 30vh;
+}
+.box2 {
+  height: 15vh;
+}
+.box3 {
+  height: 10vh;
+}
+.userGenre .box:hover {
+  background-color: black;
+  color: #f7b801;
+}
+
+@media only screen and (max-width: 770px) {
+  .box {
+    height: 8vh;
+    padding: 1%;
+    /* font-size: larger; */
+    /* width: 50%; */
+  }
+}
+@media only screen and (max-width: 575px) {
+  .box {
+    height: 4vh;
+    padding: 0;
+    font-size: large;
+    /* width: 50%; */
+  }
+}
+ 

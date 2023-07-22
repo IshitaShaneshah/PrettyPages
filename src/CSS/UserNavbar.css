@@ -30,3 +30,21 @@
 .mynav .navbar-toggler{
    background-color: #ffd60a;
 }
+
+/* search bar */
+.mynav .navbar-nav .searchinput{
+   margin-left: 200px;
+}
+.mynav .navbar-nav .searchinput input{
+   width: 50vh;
+}
+.mynav .navbar-nav .searchinput button{
+   background-color: #ffd60a;
+}
+.mynav .navbar-nav .searchinput button svg{
+   height: 20px;
+   width:20px;
+}
+.mynav .navbar-nav .searchinput button:hover{
+   background-color: black;
+}
