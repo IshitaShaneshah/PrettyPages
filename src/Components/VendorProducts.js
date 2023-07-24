@@ -37,8 +37,9 @@ const VendorProducts = () => {
   })
 
   const getData = async()=>{
+    console.log("hii")
     const response = await axios.get("http://localhost:3100/api/v2/catalog")
-    setBook(response);
+    setBook(response.data.message);
     console.log(response)
 }
     useEffect(()=>{
