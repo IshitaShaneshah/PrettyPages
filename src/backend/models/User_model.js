@@ -33,8 +33,14 @@ const Schema = new mongoose.Schema({
     type: String,
     required: true,
   },
-  wishlist: [WishlistItemSchema], 
+  wishlist: [WishlistItemSchema],
   cart: [CartItemSchema],
+  count: {
+    type: Number,
+  },
+  Total_amt: {
+    type: Number,
+  },
 });
 
 module.exports = mongoose.model("User", Schema);

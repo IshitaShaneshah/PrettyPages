@@ -2,7 +2,7 @@ const HttpError = require("../Utils/httpError");
 
 const Vendor = require("../models/vendor_model");
 const Book = require("../models/books_model");
-var ven_mail = 0;
+var ven_mail = '';
 
 exports.vendorSignup = async (req, res, next) => {
   console.log(req.body);
@@ -84,12 +84,8 @@ exports.booksDisplay = async (req, res, next) => {
 
 exports.bookCatalog = async(req,res,next)=>{
   try {
-    const {name, author, price, category, genre, quantity, vmail} = req.body
-    console.log("hiii")
-    console.log(vmail);
     const cata= await Book.find({vendor_mail: ven_mail})
-    // res.status(200).json({message: cata})
-    console.log(cata)
+    res.status(200).json({message: cata})
   } catch (err) {
     const error = new HttpError("Failed. Try again after some time", 500);
     return next(error);
@@ -127,15 +123,24 @@ exports.bookUpdate = async (req, res, next) => {
 
 exports.myBooks = async(req,res,next) =>{
   const {vemail} = req.body;
-  // console.log(vemail)
-  ven_mail = JSON.stringify(vemail);
-  // const mail= Book.find({vendor_mail: vemail})
+  ven_mail = vemail;
   try {
-    // console.log(vemail)
-    // return mail;
   } catch (err) {
     console.log(err);
     const error = new HttpError("Failed. Try again after some time", 500);
     return next(error);
   }
+}
+
+exports.bookDelete = (req,res,next)=>{
+  const name = req.body.title;
+  Book.findOneAndRemove(name, () => {
+    try {
+      res.json({ message: "Book Deleted" });
+    } catch (err) {
+      console.log(err);
+      const error = new HttpError("Problem countered, try again", 500);
+      return next(error);
+    }
+  });
 }
