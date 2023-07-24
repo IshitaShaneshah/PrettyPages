@@ -1,16 +1,7 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import "../CSS/Product.css";
 import { Link } from "react-router-dom";
 const Product = (props) => {
-  // const book={
-  //   title:"The Jungle Book",
-  //   author : "XYZ",
-  //   category:"fiction",
-  //   pages:120,
-  //   genre : "Thriller",
-  //   price : 45+"$",
-  //   desc:"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla ac ultricies velit, eu vehicula orci. Vestibulum gravida dapibus elementum. Suspendisse pulvinar convallis nisl, nec sollicitudin eros feugiat imperdiet. Vestibulum at malesuada massa, vel pellentesque dolor. Cras malesuada ex quam, non fermentum elit ornare in."
-  // }
   return (
     <div className="product">
       <div className="product-box">
@@ -35,7 +26,7 @@ const Product = (props) => {
         <div className="book-price2"><span>Price : </span>{props.book.price} Rs.</div>
       </div>
       <div className="book-btn">
-          <button>
+          <button onClick={()=>props.addToCart(props.book)}>
             <svg
               xmlns="http://www.w3.org/2000/svg"
               width="16"
