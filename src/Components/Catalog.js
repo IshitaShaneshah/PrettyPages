@@ -5,6 +5,7 @@ import axios from "axios";
 const Catalog = () => {
   const [bookData, setBookData] = useState([]);
   const [cart, setCart] = useState([]);
+  const [wishList,setWishList]=useState([])
   const [count, setCount] = useState(0);
   // const [amount,setAmount]=useState(0);
   const [totalAmount,setTotalAmount]=useState(0);
@@ -18,17 +19,10 @@ const Catalog = () => {
     getData();
     getData();
   }, []);
-
-  // let arr=[];
-  useEffect(() => {
-    console.log(cart);
-    console.log("Count", count);
-    console.log("t",totalAmount);
-  });
+useEffect(()=>{
+  console.log(wishList,"kk")
+})
   const addToCart = (book) => {
-    // if(cart.find(({_id})=>_id===book._id))
-    // {
-    // }
     let index = cart.findIndex((obj) => obj._id === book._id);
     if (index !== -1) {
       cart[index].count += 1;
@@ -45,10 +39,21 @@ const Catalog = () => {
 
     setCount(count + 1);
   };
+  const addToWishList=(book)=>{
+    let index = wishList.findIndex((obj) => obj._id === book._id);
+    if (index !== -1) {
+    } else {  
+      setWishList((arr) => {
+        return [...arr, book];
+      });
+    }
+
+
+  }
   const products = bookData.map((element, index) => {
     return (
       <div className="col-xl-3 col-lg-4 col-sm-6">
-        <Product book={element} key={index} addToCart={addToCart} />
+        <Product book={element} key={index} addToCart={addToCart} addToWishList={addToWishList}/>
       </div>
     );
   });
