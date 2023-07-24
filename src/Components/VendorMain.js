@@ -6,7 +6,7 @@ import feature2 from "../photos/feature2.png";
 import feature3 from "../photos/feature3.png";
 import feature4 from "../photos/feature4.png";
 import { Link } from "react-router-dom";
-const VendorMain = () => {
+const VendorMain = (props) => {
   return (
     <div className="vendorHome">
       {/* vendor Intro */}
@@ -18,7 +18,7 @@ const VendorMain = () => {
               If you are a book-seller, here is your chance to reach crores of
               customers across India by selling on Pretty Pages.
             </p>
-            <button className="vendorHome-btn">Start selling</button>
+            <Link onClick={()=>props.toggleHandler(1)} ><button className="vendorHome-btn">Start selling</button> </Link>
           </div>
           <div className="col-md-5 sell-book-img">
             <img src={sellbook} />
@@ -59,12 +59,12 @@ const VendorMain = () => {
         <h2 className="heading">Services</h2>
         <div className="row justify-content-evenly">
           <div className="col-md-2">
-            <Link to="/">
+            <Link onClick={()=>props.toggleHandler(1)}>
               <div className="service">Add Product</div>
             </Link>
           </div>
           <div className="col-md-2">
-            <Link to="/">
+            <Link onClick={()=>props.toggleHandler(2)}>
               <div className="service">Your Catalog</div>
             </Link>
           </div>

@@ -3,7 +3,7 @@
   counter-reset: Serial;
   /* background-color: black; */
   padding: 20px;
-  height:100vh;
+  /* height:100vh; */
   
 }
 /* for sno */
@@ -68,4 +68,8 @@ tr td:first-child:before {
     justify-content: end;
     display: flex;
     margin-right: 30px;
+}
+
+.vendorProducts .deletebtn{
+    width:100px;
 }

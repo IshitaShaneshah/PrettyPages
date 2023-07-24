@@ -1,61 +1,21 @@
 import React, { useState,useEffect } from "react";
 import "../CSS/VendorProduct.css";
-import axios from "axios";
-const VendorProducts = () => {
-  const [vemail,setVemail]=useState("");
-  const [book, setBook] = useState([
-    {
-      title: "The Jungle Book",
-      author: "XYZ",
-      genre: "fiction",
-      pages: 120,
-      subgenre: "Thriller",
-      price: 45 + "$",
-      quantity:12,
-      desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla ac ultricies velit, eu vehicula orci. Vestibulum gravida dapibus elementum. Suspendisse pulvinar convallis nisl, nec sollicitudin eros feugiat imperdiet. Vestibulum at malesuada massa, vel pellentesque dolor. Cras malesuada ex quam, non fermentum elit ornare in.",
-    },
-    {
-      title: "Dictionary",
-      author: "ABC",
-      genre: "fiction",
-      pages: 120,
-      subgenre: "Thriller",
-      price: 45 + "$",
-      quantity:30,
-      desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla ac ultricies velit, eu vehicula orci. Vestibulum gravida dapibus elementum. Suspendisse pulvinar convallis nisl, nec sollicitudin eros feugiat imperdiet. Vestibulum at malesuada massa, vel pellentesque dolor. Cras malesuada ex quam, non fermentum elit ornare in.",
-    },
-  ]);
-  useEffect(()=>{
-    setVemail(localStorage.getItem("vemail"));
-    if(vemail){
-      axios.post("http://localhost:3100/api/v2/vendorcatalog",{
-        vemail: vemail
-      })
-    }
-    // const response = axios.get("http://localhost:3100/api/v2/vendorcatalog")
-    //   console.log(response)  
-  })
-
-  const getData = async()=>{
-    console.log("hii")
-    const response = await axios.get("http://localhost:3100/api/v2/catalog")
-    setBook(response.data.message);
-    console.log(response)
-}
-    useEffect(()=>{
-      console.log("hoo")
-      getData();
-    },[]) 
-  const rowdata = book.map((ele, index) => {
+import { Link } from "react-router-dom";
+const VendorProducts = (props) => {
+    
+  const rowdata = props.book?.map((ele, index) => {
     return (
       <tr>
         <td scope="row"></td>
         <td>{ele.title}</td>
-        <td>{ele.author}</td>
+        <td>{ele.author_name}</td>
         <td>{ele.price}</td>
-        <td>{ele.genre}</td>
-        <td>{ele.subgenre}</td>
+        <td>{ele.Genre}</td>
+        <td>{ele.sub_genre}</td>
         <td>{ele.quantity}</td>
+        <td>
+          <button className="deletebtn" onClick={()=>props.deleteHandler(ele)}>Delete</button>
+        </td>
       </tr>
     );
   });
@@ -72,6 +32,7 @@ const VendorProducts = () => {
             <th scope="col">Category</th>
             <th scope="col">Genre</th>
             <th scope="col">Quantity</th>
+            <th scope="col">Action</th>
           </tr>
         </thead>
         <tbody class="table-group-divider">
@@ -79,7 +40,7 @@ const VendorProducts = () => {
         </tbody>
       </table>
       <div className="button-cls">
-      <button className="me-0"><a href="/">Add more books..</a></button>
+      <button className="me-0"><Link onClick={() => props.toggleHandler(1)}>Add more books..</Link></button>
     </div>
     </div>
   );
