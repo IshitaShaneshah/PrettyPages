@@ -2,7 +2,7 @@ const HttpError = require("../Utils/httpError");
 
 const Vendor = require("../models/vendor_model");
 const Book = require("../models/books_model");
-var ven_mail = '';
+var ven_mail = "";
 
 exports.vendorSignup = async (req, res, next) => {
   console.log(req.body);
@@ -10,20 +10,20 @@ exports.vendorSignup = async (req, res, next) => {
     email: req.body.email,
     password: req.body.password,
   });
-  console.log("vendor", newVendor)
+  console.log("vendor", newVendor);
   // if (Vendor.findOne({ email: req.body.email })) {
   //   console.log("exists")
   //   res.json({ message: "Vendor already exists" });
   // } else {
-    try {
-      await newVendor.save();
-      console.log("signed in")
-      res.json({ message: "Vendor signed in" });
-    } catch (err) {
-      console.log(err);
-      const error = new HttpError("Signup failed", 500);
-      return next(error);
-    }
+  try {
+    await newVendor.save();
+    console.log("signed in");
+    res.json({ message: "Vendor signed in" });
+  } catch (err) {
+    console.log(err);
+    const error = new HttpError("Signup failed", 500);
+    return next(error);
+  }
   // }
 };
 
@@ -61,15 +61,15 @@ exports.bookAdd = async (req, res, next) => {
     price: req.body.price,
     quantity: req.body.quantity,
   });
-    try {
-      await newBook.save();
-      console.log("Book added")
-      res.json({ message: "Book added" });
-    } catch (err) {
-      console.log(err);
-      const error = new HttpError("Failed. Try again after some time", 500);
-      return next(error);
-    }
+  try {
+    await newBook.save();
+    console.log("Book added");
+    res.json({ message: "Book added" });
+  } catch (err) {
+    console.log(err);
+    const error = new HttpError("Failed. Try again after some time", 500);
+    return next(error);
+  }
 };
 
 exports.booksDisplay = async (req, res, next) => {
@@ -82,15 +82,15 @@ exports.booksDisplay = async (req, res, next) => {
   }
 };
 
-exports.bookCatalog = async(req,res,next)=>{
+exports.bookCatalog = async (req, res, next) => {
   try {
-    const cata= await Book.find({vendor_mail: ven_mail})
-    res.status(200).json({message: cata})
+    const cata = await Book.find({ vendor_mail: ven_mail });
+    res.status(200).json({ message: cata });
   } catch (err) {
     const error = new HttpError("Failed. Try again after some time", 500);
     return next(error);
   }
-}
+};
 
 exports.bookUpdate = async (req, res, next) => {
   try {
@@ -120,9 +120,8 @@ exports.bookUpdate = async (req, res, next) => {
   }
 };
 
-
-exports.myBooks = async(req,res,next) =>{
-  const {vemail} = req.body;
+exports.myBooks = async (req, res, next) => {
+  const { vemail } = req.body;
   ven_mail = vemail;
   try {
   } catch (err) {
@@ -130,17 +129,17 @@ exports.myBooks = async(req,res,next) =>{
     const error = new HttpError("Failed. Try again after some time", 500);
     return next(error);
   }
-}
+};
 
-exports.bookDelete = (req,res,next)=>{
-  const name = req.body.title;
-  Book.findOneAndRemove(name, () => {
-    try {
-      res.json({ message: "Book Deleted" });
-    } catch (err) {
-      console.log(err);
+exports.bookDelete = async (req, res, next) => {
+  const id = req.params.id;
+  try {
+    const del = await Book.findByIdAndDelete(id)
+    res.send(del)
+  } catch (err) {
+    console.log(err);
       const error = new HttpError("Problem countered, try again", 500);
       return next(error);
-    }
-  });
-}
+  }
+  
+};

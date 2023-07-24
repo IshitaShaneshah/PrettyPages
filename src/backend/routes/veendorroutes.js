@@ -11,5 +11,5 @@ router.get("/bookDisplay", vendor_controller.booksDisplay)
 router.get("/catalog", vendor_controller.bookCatalog);
 router.put("/updateBookDetails/:id", vendor_controller.bookUpdate);
 router.post("/vendorcatalog", vendor_controller.myBooks)
-// router.get("/vendorcatalog", vendor_controller.myBooks);
+router.delete("/delete/:id", vendor_controller.bookDelete);
 module.exports = router;

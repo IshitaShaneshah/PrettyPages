@@ -36,8 +36,9 @@ useEffect(()=>{
     console.log(response)
 }
 const deleteHandler=(ele)=>{
-  console.log(ele._id);
-
+  axios.delete(`http://127.0.0.1:3100/api/v2/delete/${ele._id}`)
+  console.log("deleted")
+  getData()
 }
   // const response = axios.get("http://localhost:3100/api/v2/vendorcatalog")
   //   console.log(response)  
