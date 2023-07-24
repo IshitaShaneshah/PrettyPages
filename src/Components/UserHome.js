@@ -19,15 +19,14 @@ const UserHome = (props) => {
     count:0,
     email:localStorage.getItem("uemail")
 })
-// useEffect(()=>{
-//  setState(...state,
-//   [email]:localStorage.getItem("uemail"));
-// })
 console.log(state);
   const toggleHandler=(value)=>{
     setToggle(value);
     console.log(value);
 }
+// const getData=()=>{
+
+// }
   return (
     <>
     <UserNavbar user="buyer" toggleHandler={toggleHandler} logoutHandler={props.logoutHandler}/>
