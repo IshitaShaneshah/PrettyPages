@@ -20,7 +20,6 @@ const Catalog = (props) => {
     getData();
     getData();
   }, []);
-<<<<<<< Updated upstream
   const getWish = async () => {
     const response = await axios.get(
       "http://localhost:3100/api/v1/wishlist/display"
@@ -40,11 +39,6 @@ const Catalog = (props) => {
       });
     }
   }, [wishList]);
-=======
-// useEffect(()=>{
-//   console.log(wishList,"kk")
-// })
->>>>>>> Stashed changes
   const addToCart = (book) => {
     let index = cart.findIndex((obj) => obj._id === book._id);
     if (index !== -1) {
@@ -75,16 +69,7 @@ const Catalog = (props) => {
   const products = bookData.map((element, index) => {
     return (
       <div className="col-xl-3 col-lg-4 col-sm-6">
-<<<<<<< Updated upstream
-        <Product
-          book={element}
-          key={index}
-          addToCart={addToCart}
-          addToWishList={addToWishList}
-        />
-=======
         <Product book={element} key={index} addToCart={addToCart} addToWishList={addToWishList} toggleHandler={props.toggleHandler} displaybook={props.displaybook}/>
->>>>>>> Stashed changes
       </div>
     );
   });
