@@ -6,9 +6,10 @@
   background-size: contain; */
   height:70vh;
   padding-top: 5%;
+  /* padding-bottom: 5% */
 }
 .book {
-  width: 300px;
+  width: 350px;
   margin: auto;
   height: 300px;
   position: relative;
@@ -29,7 +30,7 @@
   /* transform-style: preserve-3d; */
 }
 .book .page img {
-  width: 300px;
+  width: 350px;
   height: 400px;
   transform-origin: left bottom;
   transition-duration: 4s;

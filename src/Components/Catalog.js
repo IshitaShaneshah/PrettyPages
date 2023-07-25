@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import "../CSS/Catalog.css";
 import Product from "./Product";
 import axios from "axios";
-const Catalog = () => {
+const Catalog = (props) => {
   const [bookData, setBookData] = useState([]);
   const [cart, setCart] = useState([]);
   const [wishList, setWishList] = useState([]);
@@ -20,6 +20,7 @@ const Catalog = () => {
     getData();
     getData();
   }, []);
+<<<<<<< Updated upstream
   const getWish = async () => {
     const response = await axios.get(
       "http://localhost:3100/api/v1/wishlist/display"
@@ -39,6 +40,11 @@ const Catalog = () => {
       });
     }
   }, [wishList]);
+=======
+// useEffect(()=>{
+//   console.log(wishList,"kk")
+// })
+>>>>>>> Stashed changes
   const addToCart = (book) => {
     let index = cart.findIndex((obj) => obj._id === book._id);
     if (index !== -1) {
@@ -63,25 +69,59 @@ const Catalog = () => {
       setWishList((arr) => {
         return [...arr, book];
       });
+
     }
   };
   const products = bookData.map((element, index) => {
     return (
       <div className="col-xl-3 col-lg-4 col-sm-6">
+<<<<<<< Updated upstream
         <Product
           book={element}
           key={index}
           addToCart={addToCart}
           addToWishList={addToWishList}
         />
+=======
+        <Product book={element} key={index} addToCart={addToCart} addToWishList={addToWishList} toggleHandler={props.toggleHandler} displaybook={props.displaybook}/>
+>>>>>>> Stashed changes
       </div>
     );
+  });
+  const genreProducts= bookData.map((element, index) => {
+    // console.log("1",props.subGenre);
+    // console.log("2",element.sub_genre);
+    if(props.subGenre===element.sub_genre){
+      console.log(element)
+    return (
+      <div className="col-xl-3 col-lg-4 col-sm-6">
+        <Product book={element} key={index} addToCart={addToCart} addToWishList={addToWishList} toggleHandler={props.toggleHandler} displaybook={props.displaybook}/>
+      </div>
+    );
+    }
+  });
+  const searchProduct= bookData.map((element, index) => {
+    // console.log("1",props.subGenre);
+    // console.log("2",element.sub_genre);
+    if(props.search.toLowerCase()===element.title.toLowerCase()){
+      console.log(element)
+    return (
+      <div className="col-xl-3 col-lg-4 col-sm-6">
+        <Product book={element} key={index} addToCart={addToCart} addToWishList={addToWishList} toggleHandler={props.toggleHandler} displaybook={props.displaybook}/>
+      </div>
+    );
+    }
   });
   return (
     <div className="catalog">
       <div className="container">
         <h2 className="catalog-title">Our Products</h2>
-        <div className="row justify-content-center">{products}</div>
+        <div className="row justify-content-center">
+          {
+            props.subGenre?genreProducts:products
+            // searchProduct
+          }
+          </div>
       </div>
     </div>
   );

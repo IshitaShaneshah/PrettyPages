@@ -1,23 +1,42 @@
-import React from "react";
 import "../CSS/BookDetail.css";
+import React, { useEffect, useState } from "react";
 // import Temp from './Temp'
 import bookside from "../photos/book-side.jpg";
+import axios from "axios";
 const BookDetail = () => {
-  const book = {
-    title: "The Jungle Book",
-    author: "XYZ",
-    category: "fiction",
-    pages: 120,
-    genre: "Thriller",
-    price: 45 + "$",
-    desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla ac ultricies velit, eu vehicula orci. Vestibulum gravida dapibus elementum. Suspendisse pulvinar convallis nisl, nec sollicitudin eros feugiat imperdiet. Vestibulum at malesuada massa, vel pellentesque dolor. Cras malesuada ex quam, non fermentum elit ornare in.",
+  const [bookData, setBookData] = useState([]);
+  const getData = async () => {
+    const response = await axios.get(
+      "http://localhost:3100/api/v2/bookDisplay"
+    );
+    setBookData(response.data.message);
   };
+  useEffect(() => {
+    getData();
+    getData();
+    
+  }, []);
+  const newarrival= bookData.map((ele,index)=>{
+    if(index<bookData.length && index>=bookData.length-6)
+    { 
+      // console.log(ele,"index",index);
+      return(<div className="col-lg-2 col-md-4 col-sm-6 my-2">
+        <div className="book-cover">
+          <img
+            className="book-top"
+            src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSaGVLNKbby0qadXZY0Xt_5Xb9ZLaWSpvpEEw&usqp=CAU"
+          />
+          <img className="book-side" src={bookside} />
+          </div>
+      </div>
+    )
+    }
+  })
   return (
     <div className="book-detail container">
       <div className="heading">New Arrivals</div>
       <div className="book-container row">
-        {/* <div className="book-coverbg"> */}
-        <div className="col-lg-2 col-md-4 col-sm-6 my-2">
+        {/* <div className="col-lg-2 col-md-4 col-sm-6 my-2">
           <div className="book-cover">
             <img
               className="book-top"
@@ -70,7 +89,8 @@ const BookDetail = () => {
             />
             <img className="book-side" src={bookside} />
           </div>
-        </div>
+        </div> */}
+        {newarrival}
         {/* </div> */}
         {/* <div className="preface col-md-6">
           <div className="content">

@@ -19,7 +19,7 @@ const Product = (props) => {
             <div className="book-subgenre"><span>Genre :</span> {props.book.Genre}</div>
             {/* <div className="book-desc">Desc : Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla ac ultricies velit, eu vehicula orci. Vestibulum gravida dapibus elementum. Suspendisse pulvinar convallis nisl, nec sollicitudin eros feugiat imperdiet. Vestibulum at malesuada massa, vel pellentesque dolor. Cras malesuada ex quam, non fermentum elit ornare in.</div> */}
             <div className="book-price"><span>Price :</span> {props.book.price}</div>
-            <Link className="know-more" to="/productDetails">Know more...</Link>
+            <Link className="know-more" onClick={()=>{props.toggleHandler(4); props.displaybook(props.book)}}>Know more...</Link>
           </div>
         </div>
         <div className="book-title2 my-2">{props.book.title}</div>

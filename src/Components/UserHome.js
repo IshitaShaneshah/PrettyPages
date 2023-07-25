@@ -12,29 +12,32 @@ import PostProduct from './PostProduct'
 import VendorProducts from './VendorProducts'
 const UserHome = (props) => {
   const[toggle,setToggle]=useState(0);
-  const[state,setState]=useState({
-    wishList:[],
-    cart:[],
-    totalAmount:0,
-    count:0,
-    email:localStorage.getItem("uemail")
-})
-console.log(state);
-  const toggleHandler=(value)=>{
+  const[bookinfo,setBookinfo]=useState({});
+  const[subGenre,setSubGenre]=useState("");
+  const[search,setSearch]=useState("");
+  const toggleHandler=(value,genre)=>{
     setToggle(value);
     console.log(value);
+    console.log(genre);
+    setSubGenre(genre);
 }
-// const getData=()=>{
+console.log(subGenre);
 
-// }
+const displaybook=(book)=>{
+  setBookinfo(book)
+}
+const searchHandler=(book_name)=>{
+ setSearch(book_name);
+}
   return (
     <>
-    <UserNavbar user="buyer" toggleHandler={toggleHandler} logoutHandler={props.logoutHandler}/>
+    <UserNavbar user="buyer" toggleHandler={toggleHandler} logoutHandler={props.logoutHandler} searchHandler={searchHandler}/>
     {      
-      toggle===1?<Catalog/>:
+      toggle===1?<Catalog toggleHandler={toggleHandler} displaybook={displaybook} subGenre={subGenre} search={search}/>:
       toggle===2?<WishList/>:
       toggle===3?<Cart/>:
-      <UserMain/>
+      toggle===4?<BookInfo bookinfo={bookinfo}/>:
+      <UserMain toggleHandler={toggleHandler}/>
     }
     
     <UserFooter user="buyer" toggleHandler={toggleHandler} logoutHandler={props.logoutHandler}/>

@@ -4,9 +4,9 @@ import { Link } from "react-router-dom";
 import logo from "../photos/logo.png";
 const UserNavbar = (props) => {
   const [listItems, setListItem] = useState([]);
+  const [search,setSearch]=useState("");
   const vendorli = ["Home", "Add Product", "Your Catalog"];
   const userli = ["Home", "Products", "Wishlist", "Cart"];
-  let search;
   useEffect(() => {
     console.log(props.user);
     if (props.user === "vendor") setListItem(vendorli);
@@ -50,12 +50,13 @@ const UserNavbar = (props) => {
             {
               props.user === "vendor"?<></> :
               <div class="input-group searchinput">
-              <input
+              <input onChange={(event)=>setSearch(event.target.value)}
                 type="text"
+                value={search}
                 class="form-control"
                 placeholder="Enter book name"
               />
-              <button class="btn" type="button" id="button-addon2">
+              <button class="btn" type="submit" id="button-addon2" onClick={()=>props.searchHandler(search)}>
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   width="16"
