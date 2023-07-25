@@ -25,23 +25,18 @@ useEffect(()=>{
   }
 })
   useEffect(()=>{
-    console.log("hoo")
     getData();
   },[]) 
 
   const getData = async()=>{
-    console.log("hii")
     const response = await axios.get("http://localhost:3100/api/v2/catalog")
     setBook(response.data.message);
     console.log(response)
 }
 const deleteHandler=(ele)=>{
   axios.delete(`http://127.0.0.1:3100/api/v2/delete/${ele._id}`)
-  console.log("deleted")
   getData()
 }
-  // const response = axios.get("http://localhost:3100/api/v2/vendorcatalog")
-  //   console.log(response)  
   return (
     <>
       <UserNavbar
