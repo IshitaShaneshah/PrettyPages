@@ -11,6 +11,6 @@ router.post("/wishlist/add", user_controller.wishlistAdd);
 router.get("/wishlist/display", user_controller.wishlistDisplay);
 router.post("/cart/add", user_controller.cartAdd);
 router.get("/cart/display", user_controller.cartDisplay);
-router.delete("/item/delete", user_controller.deleteCartItem);
+router.delete("/item/delete/:id", user_controller.deleteCartItem);
 
 module.exports = router;

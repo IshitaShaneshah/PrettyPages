@@ -49,9 +49,10 @@ exports.vendorLogin = async (req, res) => {
 };
 
 exports.bookAdd = async (req, res, next) => {
+  console.log(res.body);
   const newBook = new Book({
     author_name: req.body.author_name,
-    // image: req.params.image,
+    image: req.params.image,
     title: req.body.title,
     description: req.body.description,
     Genre: req.body.Genre,

@@ -97,11 +97,15 @@ const PostProduct = () => {
     const formData=new FormData();
     formData.append('image',selectedFile);
     if(bookDetails.title && bookDetails.author && bookDetails.img && bookDetails.price && bookDetails.desc && bookDetails.quantity && bookDetails.genre && bookDetails.subgenre)
-    { console.log(bookDetails);
+    { console.log(bookDetails.img);
       axios.post("http://localhost:3100/api/v2/bookAdd",
       {
         author_name: bookDetails.author,
+<<<<<<< Updated upstream
           image: formData,
+=======
+          image: bookDetails.img,
+>>>>>>> Stashed changes
           title: bookDetails.title,
           description: bookDetails.desc,
           Genre: bookDetails.genre,
