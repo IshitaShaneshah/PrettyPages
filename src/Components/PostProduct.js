@@ -101,11 +101,7 @@ const PostProduct = () => {
       axios.post("http://localhost:3100/api/v2/bookAdd",
       {
         author_name: bookDetails.author,
-<<<<<<< Updated upstream
           image: formData,
-=======
-          image: bookDetails.img,
->>>>>>> Stashed changes
           title: bookDetails.title,
           description: bookDetails.desc,
           Genre: bookDetails.genre,
