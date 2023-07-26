@@ -20,9 +20,16 @@ const UserNavbar = (props) => {
   const navItems = listItems.map((ele, index) => {
     return (
       <li className="nav-item" key={index}>
-        <Link className="nav-link" onClick={() => {props.toggleHandler(index); props.searchHandler(""); setSearch("")}} >
+        {
+          props.user==="vendor"?
+          <Link className="nav-link" onClick={() => {props.toggleHandler(index); props.searchHandler(""); setSearch("")}} >
           {ele}
-        </Link>
+        </Link>:
+         <Link className="nav-link" onClick={() => {props.toggleHandler(index);}} >
+         {ele}
+       </Link>
+        }
+       
       </li>
     );
   });

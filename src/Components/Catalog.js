@@ -8,6 +8,7 @@ const Catalog = (props) => {
   const [wishList, setWishList] = useState([]);
   const [count, setCount] = useState(0);
   const [list,setList]=useState([]);
+  // const[displayWishlist]
   // const [amount,setAmount]=useState(0);
   const [totalAmount, setTotalAmount] = useState(0);
   const [email, setEmail] = useState(localStorage.getItem("uemail"));
@@ -93,17 +94,10 @@ const Catalog = (props) => {
       </div>
     );
   });
-<<<<<<< Updated upstream
-  const genreProducts = bookData.map((element, index) => {
-=======
-  const displayWishlist=(list)=>{
-    list.map((ele)=>{
-      console.log(ele);
-    })
-
+  const displayWishlist=()=>{
+    
   }
-  const genreProducts= bookData.map((element, index) => {
->>>>>>> Stashed changes
+  const genreProducts = bookData.map((element, index) => {
     // console.log("1",props.subGenre);
     // console.log("2",element.sub_genre);
     if (props.subGenre === element.sub_genre) {
@@ -147,11 +141,7 @@ const Catalog = (props) => {
         <h2 className="catalog-title">Our Products</h2>
         <div className="row justify-content-center">
           {
-<<<<<<< Updated upstream
-            props.subGenre ? genreProducts : products
-=======
             props.search?searchProduct:props.subGenre?genreProducts:products
->>>>>>> Stashed changes
             // searchProduct
           }
         </div>

@@ -76,7 +76,7 @@ const PostProduct = () => {
       };
     });
   };
-  const imageHandler = (event) => {
+  const imageHandler = async(event) => {
   setSelectedFile(event.target.files[0])
     // const file = event.target.files[0];
     // const base64 = await convertToBase64(file);
