@@ -64,7 +64,7 @@ exports.bookDisplay = async (res, req, next) => {
   }
 };
 
-
+//Add the book to wishlist
 exports.wishlistAdd = async (req, res, next) => {
   const { wishList, user_id } = req.body;
   const newWishlist = new Wishlist({
@@ -83,7 +83,6 @@ exports.wishlistAdd = async (req, res, next) => {
       },
       { upsert: true }
     );
-    // console.log("added");
     res.json({ message: "Book added in wishlist" });
   } catch (err) {
     const error = new HttpError("Book not found", 500);
@@ -91,12 +90,66 @@ exports.wishlistAdd = async (req, res, next) => {
   }
 };
 
-exports.wishlistDisplay = async(req,res,next) =>{
+// Display the contents of wishlist
+exports.wishlistDisplay = async (req, res, next) => {
   try {
-    const cata = await Wishlist.find({user_id: user_mid});
+    const cata = await Wishlist.find({ user_id: user_mid });
     res.status(200).json({ message: cata });
   } catch (err) {
     const error = new HttpError("Failed. Try again after some time", 500);
     return next(error);
   }
-}
+};
+
+// Add the books to the cart
+exports.cartAdd = async (req, res, next) => {
+  const { cart, user_id } = req.body;
+  const newCart = new Cart({
+    user_id: user_id,
+    cart: cart,
+  });
+  user_mid = user_id;
+  try {
+    await Cart.updateOne(
+      { user_id: user_id },
+      {
+        $set: {
+          user_id: newCart.user_id,
+          cart: newCart.cart,
+        },
+      },
+      { upsert: true }
+    );
+    res.json({ message: "Book added in cart" });
+  } catch (err) {
+    const error = new HttpError("Book not found", 500);
+    throw error;
+  }
+};
+
+// Display the contents of cart
+exports.cartDisplay = async (req, res, next) => {
+  try {
+    const data = await Cart.find({ user_id: user_mid });
+    res.status(200).json({ message: data });
+  } catch (err) {
+    const error = new HttpError("Failed. Try again after some time", 500);
+    return next(error);
+  }
+};
+
+//delete Elements from the cart
+exports.deleteCartItem = async (req, res, next) => {
+  const id = req.params.id;
+  console.log(req);
+  console.log(id);
+  try {
+    // const del = await Book.findByIdAndDelete(id);
+    // res.send(del);
+  } catch (err) {
+    console.log(err);
+    const error = new HttpError("Problem countered, try again", 500);
+    return next(error);
+  }
+};
+
