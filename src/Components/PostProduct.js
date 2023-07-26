@@ -16,6 +16,7 @@ const PostProduct = () => {
   const [uploadBook, setUploadBook] = useState("");
   const [subGenre, setSubGenre] = useState("");
   const [checked,setChecked]=useState(false);
+  const[selectedFile,setSelectedFile]=useState(null);
   useEffect(()=>{
     bookDetails.img=uploadBook;
   },[uploadBook]);
@@ -75,11 +76,12 @@ const PostProduct = () => {
       };
     });
   };
-  const imageHandler = async (event) => {
-    const file = event.target.files[0];
-    const base64 = await convertToBase64(file);
-    setUploadBook(base64);
-    event.target.value = "";
+  const imageHandler = (event) => {
+  setSelectedFile(event.target.files[0])
+    // const file = event.target.files[0];
+    // const base64 = await convertToBase64(file);
+    // setUploadBook(base64);
+    // event.target.value = "";
   };
   const onChangeHandler=(event)=>{
     const { name, value } = event.target;
@@ -92,12 +94,14 @@ const PostProduct = () => {
   }
   const submitHandler=(event)=>{
     event.preventDefault();
+    const formData=new FormData();
+    formData.append('image',selectedFile);
     if(bookDetails.title && bookDetails.author && bookDetails.img && bookDetails.price && bookDetails.desc && bookDetails.quantity && bookDetails.genre && bookDetails.subgenre)
     { console.log(bookDetails);
       axios.post("http://localhost:3100/api/v2/bookAdd",
       {
         author_name: bookDetails.author,
-          // image: bookDetails.img,
+          image: formData,
           title: bookDetails.title,
           description: bookDetails.desc,
           Genre: bookDetails.genre,
