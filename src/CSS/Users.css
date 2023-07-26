@@ -1,18 +1,55 @@
 .firstPage{
-    padding:0px
+    padding:30px 0px;
 }
-.carousel-images img{
-   width:100%;
-   height: 100%;
-}
+/* intro */
 
-.carousel-inner{
-    width:100vw;
-    /* height: 60vh */
+.intro .intro-content{
+    background-color: #daecff;
+    padding: 20px;
+}
+.intro .intro-text{
+    font-size: 18px;
+}
+.intro .intro-text h2{
+    font-size: 50px;
+}
+.intro .intro-text p{
+    text-align: justify;
+}
+.intro .intro-img img{
+    width:400px;
 }
 
 
 /* users */
+.users .user-box img{
+    width:100%;
+       
+}
 .users{
+
+    margin:30px 0px;
+   
+}
+.users a{
+    text-decoration: none;
+    color:inherit;
+    font-size: 30px;
+    font-weight: bold;
+    text-align: center;
     
+}
+.users h3{
+    text-align: center;
+    font-size: 40px;
+    font-weight: bold;
+}
+
+.users .user-box:hover > p{
+    color:#ffd60a;
+    background-color: black;
+}
+.users .user-box p{
+    background-color: #0a3464;
+    color:wheat;
 }

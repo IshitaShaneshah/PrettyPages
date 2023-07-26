@@ -12,7 +12,7 @@ const UserMain = (props) => {
           <div className="col-md-7">
             <h2 className="heading">Your Online Book Store</h2>
             <p className="content-intro">
-              Read what you Love.Love what you read.
+              Read what you Love. Love what you read.
             </p>
           <Link onClick={()=>props.toggleHandler(1)}>
           <button className="buyerHome-btn">Explore Now</button>

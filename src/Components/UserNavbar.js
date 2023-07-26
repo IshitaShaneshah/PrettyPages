@@ -20,7 +20,7 @@ const UserNavbar = (props) => {
   const navItems = listItems.map((ele, index) => {
     return (
       <li className="nav-item" key={index}>
-        <Link className="nav-link" onClick={() => props.toggleHandler(index)}>
+        <Link className="nav-link" onClick={() => {props.toggleHandler(index); props.searchHandler(""); setSearch("")}} >
           {ele}
         </Link>
       </li>
@@ -56,7 +56,7 @@ const UserNavbar = (props) => {
                 class="form-control"
                 placeholder="Enter book name"
               />
-              <button class="btn" type="submit" id="button-addon2" onClick={()=>props.searchHandler(search)}>
+              <button class="btn" type="submit" id="button-addon2" onClick={()=>{props.searchHandler(search);}}>
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   width="16"

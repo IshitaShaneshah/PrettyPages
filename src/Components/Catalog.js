@@ -7,6 +7,7 @@ const Catalog = (props) => {
   const [cart, setCart] = useState([]);
   const [wishList, setWishList] = useState([]);
   const [count, setCount] = useState(0);
+  const [list,setList]=useState([]);
   // const [amount,setAmount]=useState(0);
   const [totalAmount, setTotalAmount] = useState(0);
   const [email, setEmail] = useState(localStorage.getItem("uemail"));
@@ -24,7 +25,8 @@ const Catalog = (props) => {
     const response = await axios.get(
       "http://localhost:3100/api/v1/wishlist/display"
     );
-    console.log(response.data.message);
+   setList(response.data.message);
+   displayWishlist(list);
   };
   useEffect(() => {
     getWish();
@@ -91,7 +93,17 @@ const Catalog = (props) => {
       </div>
     );
   });
+<<<<<<< Updated upstream
   const genreProducts = bookData.map((element, index) => {
+=======
+  const displayWishlist=(list)=>{
+    list.map((ele)=>{
+      console.log(ele);
+    })
+
+  }
+  const genreProducts= bookData.map((element, index) => {
+>>>>>>> Stashed changes
     // console.log("1",props.subGenre);
     // console.log("2",element.sub_genre);
     if (props.subGenre === element.sub_genre) {
@@ -135,7 +147,11 @@ const Catalog = (props) => {
         <h2 className="catalog-title">Our Products</h2>
         <div className="row justify-content-center">
           {
+<<<<<<< Updated upstream
             props.subGenre ? genreProducts : products
+=======
+            props.search?searchProduct:props.subGenre?genreProducts:products
+>>>>>>> Stashed changes
             // searchProduct
           }
         </div>
