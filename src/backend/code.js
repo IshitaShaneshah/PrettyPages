@@ -25,8 +25,8 @@ mongoose
   .then(() => {
     console.log("MongoDB connected");
   })
-  .catch(() => {
-    console.log("Failed");
+  .catch((error) => {
+    console.log("Failed\n", error);
   });
 
   //server run

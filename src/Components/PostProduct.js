@@ -77,7 +77,8 @@ const PostProduct = () => {
     });
   };
   const imageHandler = async(event) => {
-  setSelectedFile(event.target.files[0])
+    setSelectedFile(event.target.files[0]);
+    setUploadBook(URL.createObjectURL(event.target.files[0]));
     // const file = event.target.files[0];
     // const base64 = await convertToBase64(file);
     // setUploadBook(base64);
@@ -94,46 +95,73 @@ const PostProduct = () => {
   }
   const submitHandler=(event)=>{
     event.preventDefault();
-    const formData=new FormData();
-    formData.append('image',selectedFile);
-    if(bookDetails.title && bookDetails.author && bookDetails.img && bookDetails.price && bookDetails.desc && bookDetails.quantity && bookDetails.genre && bookDetails.subgenre)
-    { console.log(bookDetails.img);
-      axios.post("http://localhost:3100/api/v2/bookAdd",
-      {
-        author_name: bookDetails.author,
-          image: formData,
-          title: bookDetails.title,
-          description: bookDetails.desc,
-          Genre: bookDetails.genre,
-          sub_genre: bookDetails.subgenre,
-          pages: bookDetails.pages,
-          vendor_mail:localStorage.getItem('vemail'),
-          price: bookDetails.price,
-          quantity: bookDetails.quantity
-       } )
-       .then(console.log("Done"))
-     console.log("details",bookDetails);
-     setBookDetails({
-      title: "",
-      author: "",
-      img:"",
-      price: "",
-      desc: "",
-      quantity: "",
-      genre: "",
-      subgenre: "",
-      pages:""
-    })
-     setUploadBook("");
-     setSubGenre(false);
-    //  setChecked(false);
-    }
-    else{
-      alert("Please fill every field")
-     console.log("details",bookDetails)
-    }
 
+    const formData = new FormData();
+    formData.append('bookImage', selectedFile);
+
+    const bookData = {
+      author_name: bookDetails.author,
+      title: bookDetails.title,
+      description: bookDetails.desc,
+      Genre: bookDetails.genre,
+      sub_genre: bookDetails.subgenre,
+      pages: bookDetails.pages,
+      vendor_mail:localStorage.getItem('vemail'),
+      price: bookDetails.price,
+      quantity: bookDetails.quantity
+    };
+    formData.append('bookData', new Blob([JSON.stringify(bookData)], {
+      type: 'application/json'
+    }));
+
+    if(
+      bookDetails.title 
+      && bookDetails.author 
+      && bookDetails.img 
+      && bookDetails.price 
+      && bookDetails.desc 
+      && bookDetails.quantity 
+      && bookDetails.genre 
+      && bookDetails.subgenre
+    ) { 
+      axios.post(
+        "http://localhost:3100/api/v2/bookAdd", 
+        formData, 
+        {
+          headers: {
+            'Content-Type': 'multipart/form-data'
+          }
+        }
+      )
+        .then((res) => {
+          console.log("Done", res.data);
+        })
+        .catch((err) => {
+          console.error("Error:", err);
+        });
+       
+      console.log("details",bookDetails);
+
+      setBookDetails({
+        title: "",
+        author: "",
+        img:"",
+        price: "",
+        desc: "",
+        quantity: "",
+        genre: "",
+        subgenre: "",
+        pages:""
+      });
+      setUploadBook("");
+      setSubGenre(false);
+      // setChecked(false);
+    } else {
+      alert("Please fill every field");
+      console.log("details",bookDetails);
+    }
   }
+
   return (
     <div className="postProduct">
       <div className="postProductForm container">
@@ -148,6 +176,7 @@ const PostProduct = () => {
               <input
                 id="bimg"
                 type="file"
+                name="bookImage"
                 accept="image/*,png,jpg,jpeg"
                 onChange={imageHandler}
               />

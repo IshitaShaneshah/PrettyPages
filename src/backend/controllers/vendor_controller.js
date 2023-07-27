@@ -1,3 +1,5 @@
+const sharp = require('sharp')
+
 const HttpError = require("../Utils/httpError");
 
 const Vendor = require("../models/vendor_model");
@@ -49,20 +51,22 @@ exports.vendorLogin = async (req, res) => {
 };
 
 exports.bookAdd = async (req, res, next) => {
-  console.log(res.body);
-  const newBook = new Book({
-    author_name: req.body.author_name,
-    image: req.params.image,
-    title: req.body.title,
-    description: req.body.description,
-    Genre: req.body.Genre,
-    sub_genre: req.body.sub_genre,
-    pages: req.body.pages,
-    vendor_mail: req.body.vendor_mail,
-    price: req.body.price,
-    quantity: req.body.quantity,
-  });
+  // console.log("REQ = = ======================================", req.files)
   try {
+    const bookData = JSON.parse(req.files['bookData'][0].buffer.toString());
+
+    const bookImage = req.files['bookImage'][0];
+    const bookImageBuffer = bookImage.buffer;
+    const bookImageResized = await sharp(bookImageBuffer)
+      .resize(200, 200)
+      .toBuffer();
+
+    bookData.image = bookImageResized;
+    // console.log("BOOK DATA = = =========================", bookData);
+
+    const newBook = new Book(bookData);
+    // console.log("NEW BOOK = " , newBook);
+
     await newBook.save();
     console.log("Book added");
     res.json({ message: "Book added" });
