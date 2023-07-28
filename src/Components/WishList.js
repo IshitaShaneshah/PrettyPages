@@ -24,23 +24,34 @@ const WishList = () => {
     //   desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla ac ultricies velit, eu vehicula orci. Vestibulum gravida dapibus elementum. Suspendisse pulvinar convallis nisl, nec sollicitudin eros feugiat imperdiet. Vestibulum at malesuada massa, vel pellentesque dolor. Cras malesuada ex quam, non fermentum elit ornare in.",
     // },
   // ]);
-  const [userId, setUserId] = useState(''); 
-  console.log(userId)
-  const fetchWishlistItems = () => {
-    console.log(userId)
-    // Send a GET request to fetch the user's wishlist items
-    axios.get(`/wishlist/:${userId}`)
-      .then((response) => {
-        setWishList(response.data);
-      })
-      .catch((error) => {
-        console.error('Error fetching wishlist items:', error);
-      });
-  };
+  // const [userId, setUserId] = useState(''); 
+  // console.log(userId)
+  // const fetchWishlistItems = () => {
+  //   console.log(userId)
+  //   // Send a GET request to fetch the user's wishlist items
+  //   axios.get(`/wishlist/:${userId}`)
+  //     .then((response) => {
+  //       setWishList(response.data);
+  //     })
+  //     .catch((error) => {
+  //       console.error('Error fetching wishlist items:', error);
+  //     });
+  // };
   useEffect(()=>{
-    fetchWishlistItems();
+    // fetchWishlistItems();
+    // getWish();
+    getWish();
   },[])
-  const wishrow=wishList.map((ele,index)=>{
+  const getWish = async () => {
+    const response = await axios.get(
+      "http://localhost:3100/api/v1/wishlist/display"
+    );
+    
+   setWishList(response.data.message[0].wishList);
+
+  };
+
+  const wishrow=wishList?.map((ele,index)=>{
     return(
       <>
         <tr>
@@ -51,10 +62,10 @@ const WishList = () => {
             <td>
               <ul>
                 <li><span>Title :{ele.title}</span></li>
-                <li><span>Author :{ele.author}</span></li>
+                <li><span>Author :{ele.author_name}</span></li>
                 <li><span>Pages :{ele.pages}</span></li>
-                <li><span>Category :{ele.genre}</span></li>
-                <li><span>Genre :{ele.subgenre}</span></li>
+                <li><span>Category :{ele.Genre}</span></li>
+                <li><span>Genre :{ele.sub_genre}</span></li>
                 <li><span>Price :{ele.price}</span></li>
               </ul>
             </td>

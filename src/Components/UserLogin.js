@@ -36,16 +36,12 @@ const Login = () => {
           password: user.password,
         })
         .then((res) => {
-          setResponse(res);
-          // console.log(res);
-          // if (res.data) {
-          //   console.log("user login");
-          // } else {
-          //   console.log("sign up required");
-          // }
-        });
+         setResponse(res)
+        }).catch(()=>{
+          alert("Invalid Credentials")
+        })
     } else {
-      alert("Invalid Credentials");
+      alert("Please fill the Credentials");
     }
   };
 

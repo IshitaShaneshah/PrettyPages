@@ -77,11 +77,11 @@ const PostProduct = () => {
     });
   };
   const imageHandler = async(event) => {
-  setSelectedFile(event.target.files[0])
-    // const file = event.target.files[0];
-    // const base64 = await convertToBase64(file);
-    // setUploadBook(base64);
-    // event.target.value = "";
+  // setSelectedFile(event.target.files[0])
+    const file = event.target.files[0];
+    const base64 = await convertToBase64(file);
+    setUploadBook(base64);
+    event.target.value = "";
   };
   const onChangeHandler=(event)=>{
     const { name, value } = event.target;
@@ -94,14 +94,18 @@ const PostProduct = () => {
   }
   const submitHandler=(event)=>{
     event.preventDefault();
-    const formData=new FormData();
-    formData.append('image',selectedFile);
+    // const formData=new FormData();
+    // formData.append('image',selectedFile);
     if(bookDetails.title && bookDetails.author && bookDetails.img && bookDetails.price && bookDetails.desc && bookDetails.quantity && bookDetails.genre && bookDetails.subgenre)
     { console.log(bookDetails.img);
       axios.post("http://localhost:3100/api/v2/bookAdd",
       {
         author_name: bookDetails.author,
+<<<<<<< Updated upstream
           image: formData,
+=======
+          image: bookDetails.img,
+>>>>>>> Stashed changes
           title: bookDetails.title,
           description: bookDetails.desc,
           Genre: bookDetails.genre,

@@ -15,6 +15,7 @@ const UserHome = (props) => {
   const[bookinfo,setBookinfo]=useState({});
   const[subGenre,setSubGenre]=useState("");
   const[search,setSearch]=useState("");
+  // const[wishList,setWishList]=useState([]);
   const toggleHandler=(value,genre)=>{
     setToggle(value);
     console.log(value);
@@ -30,11 +31,12 @@ const searchHandler=(book_name)=>{
  setSearch(book_name);
  
 }
+
   return (
     <>
     <UserNavbar user="buyer" toggleHandler={toggleHandler} logoutHandler={props.logoutHandler} searchHandler={searchHandler}/>
     {      
-      toggle===1?<Catalog toggleHandler={toggleHandler} displaybook={displaybook} subGenre={subGenre} search={search}/>:
+      toggle===1?<Catalog toggleHandler={toggleHandler} displaybook={displaybook} subGenre={subGenre} search={search} />:
       toggle===2?<WishList/>:
       toggle===3?<Cart/>:
       toggle===4?<BookInfo bookinfo={bookinfo}/>:

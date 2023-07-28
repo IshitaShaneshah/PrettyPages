@@ -35,23 +35,14 @@ const Login = () => {
       axios.post("http://localhost:3100/api/v2/login",{
         email: user.email, password: user.password
       })
-      .then(res =>{
-        setResponse(res);
-
-        // setIsLogin(true);
-        // localStorage.setItem("vemail",user.email);
-        // if(res.data){
-        //   console.log("user login");
-        // }
-        // else{
-        //   console.log("sign up required");
-        // }
-      })
-      
-    }
-    else{
-      alert("Invalid Credentials")
-    }
+      .then((res) => {
+          setResponse(res)
+         }).catch(()=>{
+           alert("Invalid Credentials")
+         })
+     } else {
+       alert("Please fill the Credentials");
+     }
 
   }
   const logoutHandler=()=>{

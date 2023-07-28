@@ -1,29 +1,22 @@
-import React, { useState } from "react";
+import React, { useState,useEffect } from "react";
+import axios from "axios";
 import "../CSS/WishList.css"
 const Cart = () => {
-  const [cartList, setCartList] = useState([
-    {
-      title: "The Jungle Book",
-      author: "XYZ",
-      genre: "fiction",
-      pages: 120,
-      subgenre: "Thriller",
-      price: 45 + "$",
-      quantity: 12,
-      desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla ac ultricies velit, eu vehicula orci. Vestibulum gravida dapibus elementum. Suspendisse pulvinar convallis nisl, nec sollicitudin eros feugiat imperdiet. Vestibulum at malesuada massa, vel pellentesque dolor. Cras malesuada ex quam, non fermentum elit ornare in.",
-    },
-    {
-      title: "Dictionary",
-      author: "ABC",
-      genre: "fiction",
-      pages: 120,
-      subgenre: "Thriller",
-      price: 45 + "$",
-      quantity: 30,
-      desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla ac ultricies velit, eu vehicula orci. Vestibulum gravida dapibus elementum. Suspendisse pulvinar convallis nisl, nec sollicitudin eros feugiat imperdiet. Vestibulum at malesuada massa, vel pellentesque dolor. Cras malesuada ex quam, non fermentum elit ornare in.",
-    },
-  ]);
-  const wishrow = cartList.map((ele, index) => {
+  const [cartList, setCartList] = useState([]);
+  useEffect(()=>{
+    getCart();
+  },[])
+  const getCart = async () => {
+    const response = await axios.get(
+      "http://localhost:3100/api/v1/cart/display"
+    );
+    // if(response.data.message[0].cart!==undefined)
+   setCartList(response.data.message[0].cart);
+     
+  };
+
+  const wishrow = cartList?.map((ele, index) => {
+  
     return (
       <>
         <tr>
@@ -37,16 +30,16 @@ const Cart = () => {
                 <span>Title :{ele.title}</span>
               </li>
               <li>
-                <span>Author :{ele.author}</span>
+                <span>Author :{ele.author_name}</span>
               </li>
               <li>
                 <span>Pages :{ele.pages}</span>
               </li>
               <li>
-                <span>Category :{ele.genre}</span>
+                <span>Category :{ele.Genre}</span>
               </li>
               <li>
-                <span>Genre :{ele.subgenre}</span>
+                <span>Genre :{ele.sub_genre}</span>
               </li>
               <li>
                 <span>Price :{ele.price}</span>
@@ -57,11 +50,12 @@ const Cart = () => {
           <div className="wishlist-btn">
               <div className="counter-btn">
                 <button>+</button>
-                <span>22</span>
+                <span>{ele.count}</span>
                 <button>-</button>
               </div>
               </div>
           </td>
+          <td>{ele.amount}</td>
           <td>
             <div className="wishlist-btn">
               <button>Remove</button>
@@ -93,10 +87,20 @@ const Cart = () => {
             <th scope="col">Book</th>
             <th scope="col">Book Details</th>
             <th scope="col">Quantity</th>
+            <th scope="col">Total Price</th>
             <th scope="col">Actions</th>
           </tr>
         </thead>
-        <tbody class="table-group-divider">{wishrow}</tbody>
+        <tbody class="table-group-divider">
+          {
+            // cartList.length===0?
+            // <tr>
+            //   <td colSpan="6">Cart is Empty</td>
+            // </tr>
+            // :
+            wishrow
+          }
+          </tbody>
       </table>
     </div>
   );

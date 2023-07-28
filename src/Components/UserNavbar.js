@@ -14,14 +14,14 @@ const UserNavbar = (props) => {
     console.log(listItems);
   }, []);
 
-  useEffect(() => {
-    if (props.user === "vendor") console.log();
-  }, []);
+  // useEffect(() => {
+  //   if (props.user === "vendor") console.log();
+  // }, []);
   const navItems = listItems.map((ele, index) => {
     return (
       <li className="nav-item" key={index}>
         {
-          props.user==="vendor"?
+          props.user!=="vendor"?
           <Link className="nav-link" onClick={() => {props.toggleHandler(index); props.searchHandler(""); setSearch("")}} >
           {ele}
         </Link>:
