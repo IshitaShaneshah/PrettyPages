@@ -52,7 +52,7 @@ const Register = () => {
         <input id="re-password" type="password" name="repassword" value={user.repassword} onChange={onChangeHandler} required/>
         </div>
         <div className='register-btn'>
-        <button type="submit" class="btn btn-light" >Register</button>
+        <button type="submit" class="btn" >Register</button>
         </div>
      </form>
      <div className='login-reg'>Already have an account? <Link to="/user">Login</Link></div>

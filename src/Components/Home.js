@@ -22,7 +22,6 @@ const Home = () => {
     {/* <BookDetail/> */}
     {/* <VendorProducts/> */}
     {/* <VendorProducts/> */}
-=======
     {/* <Intro/>
     <VendorProducts/>
   <PostProduct/>*/}

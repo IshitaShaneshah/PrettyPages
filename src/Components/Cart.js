@@ -3,6 +3,7 @@ import axios from "axios";
 import "../CSS/WishList.css"
 const Cart = () => {
   const [cartList, setCartList] = useState([]);
+  const [flag,setFlag]=useState(0);
   useEffect(()=>{
     getCart();
   },[])
@@ -14,6 +15,23 @@ const Cart = () => {
    setCartList(response.data.message[0].cart);
      
   };
+
+  const countToggle=(val,ele)=>{
+    if(val===1)
+    {
+      ele.count+=1;
+      setFlag(0);
+    }
+    else{
+      if(ele.count<=1)
+      {
+        setFlag(1);
+      }
+      else
+      ele.count-=1;
+    }
+    console.log(ele.count)
+  }
 
   const wishrow = cartList?.map((ele, index) => {
   
@@ -49,9 +67,14 @@ const Cart = () => {
           <td>
           <div className="wishlist-btn">
               <div className="counter-btn">
-                <button>+</button>
+                {
+                  flag===0? 
+                  <button onClick={()=>countToggle(0,ele)}>-</button>
+                  :
+                 <button disabled>-</button>
+                }
                 <span>{ele.count}</span>
-                <button>-</button>
+                <button onClick={()=>countToggle(1,ele)}>+</button>
               </div>
               </div>
           </td>

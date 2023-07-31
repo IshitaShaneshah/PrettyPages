@@ -71,7 +71,7 @@ const Login = () => {
           <input id="password" type="password" name="password" value={user.password} onChange={onChangeHandler} required/>
           </div>
           <div className='register-btn'>
-          <button type="submit" class="btn btn-light">Login</button>
+          <button type="submit" class="btn">Login</button>
           </div>
        </form>
        <div className='login-reg'>Don't have an account? <Link to="vendorregister">Register</Link></div>

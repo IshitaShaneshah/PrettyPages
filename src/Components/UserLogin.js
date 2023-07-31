@@ -84,7 +84,7 @@ const Login = () => {
                 />
               </div>
               <div className="register-btn">
-                <button type="submit" class="btn btn-light">
+                <button type="submit" class="btn">
                   Login
                 </button>
               </div>

@@ -25,7 +25,7 @@ const WishList = () => {
     // },
   // ]);
   // const [userId, setUserId] = useState(''); 
-  // console.log(userId)
+  // console.log(userId)'
   // const fetchWishlistItems = () => {
   //   console.log(userId)
   //   // Send a GET request to fetch the user's wishlist items

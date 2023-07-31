@@ -10,6 +10,7 @@ import vendor from "../photos/vendor.jpg";
 import introBg from "../photos/introBg.gif"
 import Navbar from "./Navbar";
 import Footer from "./Footer";
+import Contact from "./Contact";
 const Users = () => {
   return (
     <>
@@ -53,7 +54,8 @@ const Users = () => {
           </div>
         </div>
       </div>
-      {/* contact us */}
+      {/* query box */}
+      <Contact/>
     </div>
     <Footer/>
     </>

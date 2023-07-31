@@ -54,7 +54,7 @@ exports.userLogin = async (req, res) => {
 
 //Catalog book display
 exports.bookDisplay = async (res, req, next) => {
-  const books = "";
+  let books = "";
   try {
     books = await Book.find();
     return res.status(200).send(books);
@@ -115,28 +115,27 @@ exports.wishlistDisplay = async (req, res, next) => {
 
 // Add the books to the cart
 exports.cartAdd = async (req, res, next) => {
-  const { cart, user_id } = req.body;
-  const newCart = new Cart({
-    user_id: user_id,
-    cart: cart,
-  });
-  user_mid = user_id;
-  try {
-    await Cart.updateOne(
-      { user_id: user_id },
-      {
-        $set: {
-          user_id: newCart.user_id,
-          cart: newCart.cart,
-        },
-      },
-      { upsert: true }
-    );
-    res.json({ message: "Book added in cart" });
-  } catch (err) {
-    const error = new HttpError("Book not found", 500);
-    throw error;
+  const {user_id,cartItems}=req.body;
+  // console.log(req.body.cartItems[0].products,"l");
+  const useradded=await Cart.findOne({user_id:req.body.user_id})
+  if(useradded){
+  //  const items =useradded.cartItems[0].products;
+  // //  items.include()
+  // console.log(items,"j")
+  
   }
+  else{
+    console.log("nhi")
+    const newCart = new Cart({
+      user_id: user_id,
+      cartItems: cartItems,
+      // qauntity:1,
+      // total_amount:0
+    });
+    newCart.save();
+    res.json({message: "saved"})
+  }
+  
 };
 
 // Display the contents of cart
@@ -159,7 +158,7 @@ exports.deleteCartItem = async (req, res, next) => {
     Cart.findOneAndUpdate(
       { user_id: user_mid },
       {
-        $pull: { 'cart' : { '_id ': id } },
+        $pull: { cart: { "_id ": id } },
       }
       // (error, data) => {
       //   if (error) {
@@ -169,9 +168,8 @@ exports.deleteCartItem = async (req, res, next) => {
       //     console.log("deleted from cart");
       //   }
       // }
-    )
-    .then(data => {
-      console.log("hii", data)
+    ).then((data) => {
+      console.log("hii", data);
       console.log("deleted from cart");
     });
   } catch (err) {

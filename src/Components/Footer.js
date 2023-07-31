@@ -18,7 +18,7 @@ const Footer = () => {
       </div>
       <div className="col">
         <div className="QuickLinksBlock">
-          <h2 className="heading">Quick Links</h2>
+          {/* <h2 className="heading">Quick Links</h2> */}
           <ul>
             {/* <li>
               <a href="/">Home</a>

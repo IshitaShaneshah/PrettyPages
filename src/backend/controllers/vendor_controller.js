@@ -58,7 +58,7 @@ exports.bookAdd = async (req, res, next) => {
     const bookImageResized = await sharp(bookImageBuffer)
       .resize(200, 200)
       .toBuffer();
-
+    
     bookData.image = bookImageResized;
     // console.log("BOOK DATA = = =========================", bookData);
 
