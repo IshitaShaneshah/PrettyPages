@@ -10,18 +10,36 @@ const Catalog = (props) => {
   const [list, setList] = useState([]);
   const [cartlist, setCartList] = useState([]);
   // const [totalAmount, setTotalAmount] = useState(0);
-  const [email, setEmail] = useState(localStorage.getItem("uemail"));
+  // const[displayWishlist]
+  // const [amount,setAmount]=useState(0);
+  const [totalAmount, setTotalAmount] = useState(0);
+  const [email, setEmail] = useState("");
 
-  useEffect(() => {
-    getData();
-    getData();
-  }, []);
+  useEffect(()=>{
+    setEmail(localStorage.getItem("uemail"));
+    // if(email){
+    //   axios.post("http://localhost:3100/api/v1/getEmail",{
+    //     uemail: email
+    //   })
+    // }
+  })
+
   const getData = async () => {
     const response = await axios.get(
       "http://localhost:3100/api/v2/bookDisplay"
     );
     setBookData(response.data.message);
   };
+  useEffect(() => {
+    getData();
+    getData();
+  }, []);
+  // const getData = async () => {
+  //   const response = await axios.get(
+  //     "http://localhost:3100/api/v2/bookDisplay"
+  //   );
+  //   setBookData(response.data.message);
+  // };
 
   useEffect(() => {
     getWish();

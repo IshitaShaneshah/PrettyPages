@@ -5,7 +5,7 @@ const Schema = new mongoose.Schema({
     required: true,
   },
   image: {
-    type: String,
+    type: Buffer,
     required: true,
   },
   title: {

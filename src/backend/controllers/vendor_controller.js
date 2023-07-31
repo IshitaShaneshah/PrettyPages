@@ -2,6 +2,7 @@ const HttpError = require("../Utils/httpError");
 
 const Vendor = require("../models/vendor_model");
 const Book = require("../models/books_model");
+const sharp = require("sharp");
 var ven_mail = "";
 
 exports.vendorSignup = async (req, res, next) => {
@@ -49,20 +50,20 @@ exports.vendorLogin = async (req, res) => {
 };
 
 exports.bookAdd = async (req, res, next) => {
-  console.log(res.body);
-  const newBook = new Book({
-    author_name: req.body.author_name,
-    image: req.params.image,
-    title: req.body.title,
-    description: req.body.description,
-    Genre: req.body.Genre,
-    sub_genre: req.body.sub_genre,
-    pages: req.body.pages,
-    vendor_mail: req.body.vendor_mail,
-    price: req.body.price,
-    quantity: req.body.quantity,
-  });
   try {
+    const bookData = JSON.parse(req.files["bookData"][0].buffer.toString());
+
+    const bookImage = req.files["bookImage"][0];
+    const bookImageBuffer = bookImage.buffer;
+    const bookImageResized = await sharp(bookImageBuffer)
+      .resize(200, 200)
+      .toBuffer();
+
+    bookData.image = bookImageResized;
+    // console.log("BOOK DATA = = =========================", bookData);
+
+    const newBook = new Book(bookData);
+    // console.log("NEW BOOK = " , newBook);
     await newBook.save();
     console.log("Book added");
     res.json({ message: "Book added" });
@@ -71,6 +72,10 @@ exports.bookAdd = async (req, res, next) => {
     const error = new HttpError("Failed. Try again after some time", 500);
     return next(error);
   }
+
+  // if (req.file) {
+  //   newBook.image = req.file.path;
+  // }
 };
 
 exports.booksDisplay = async (req, res, next) => {
@@ -135,12 +140,11 @@ exports.myBooks = async (req, res, next) => {
 exports.bookDelete = async (req, res, next) => {
   const id = req.params.id;
   try {
-    const del = await Book.findByIdAndDelete(id)
-    res.send(del)
+    const del = await Book.findByIdAndDelete(id);
+    res.send(del);
   } catch (err) {
     console.log(err);
-      const error = new HttpError("Problem countered, try again", 500);
-      return next(error);
+    const error = new HttpError("Problem countered, try again", 500);
+    return next(error);
   }
-  
 };

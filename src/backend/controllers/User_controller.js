@@ -101,6 +101,18 @@ exports.wishlistDisplay = async (req, res, next) => {
   }
 };
 
+// exports.getEmail = async(req,res,next) => {
+//   const { uemail } = req.body;
+//   user_mid = uemail;
+//   // console.log(user_mid)
+//   try {
+//   } catch (err) {
+//     console.log(err);
+//     const error = new HttpError("Failed. Try again after some time", 500);
+//     return next(error);
+//   }
+// }
+
 // Add the books to the cart
 exports.cartAdd = async (req, res, next) => {
   const { cart, user_id } = req.body;
@@ -141,15 +153,30 @@ exports.cartDisplay = async (req, res, next) => {
 //delete Elements from the cart
 exports.deleteCartItem = async (req, res, next) => {
   const id = req.params.id;
-  console.log(req);
-  console.log(id);
+  // console.log(id);
+  // console.log(user_mid);
   try {
-    // const del = await Book.findByIdAndDelete(id);
-    // res.send(del);
+    Cart.findOneAndUpdate(
+      { user_id: user_mid },
+      {
+        $pull: { 'cart' : { '_id ': id } },
+      }
+      // (error, data) => {
+      //   if (error) {
+      //     console.log("not deleted");
+      //   } else {
+      //     console.log(data)
+      //     console.log("deleted from cart");
+      //   }
+      // }
+    )
+    .then(data => {
+      console.log("hii", data)
+      console.log("deleted from cart");
+    });
   } catch (err) {
     console.log(err);
     const error = new HttpError("Problem countered, try again", 500);
     return next(error);
   }
 };
-

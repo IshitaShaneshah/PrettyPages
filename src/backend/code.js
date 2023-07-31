@@ -1,15 +1,17 @@
 //express
 const express = require("express");
 const bodyParser = require("body-parser")
-const app = express();
 const cors = require("cors")
+const multer = require("multer")
+const sharp = require("sharp")
+
+const app = express();
 
 //routes require
 const userRoute = require("./routes/userroutes");
 const vendorRoute = require("./routes/veendorroutes")
 app.use(cors());
-app.use(bodyParser.json({limit: '50mb'}));
-app.use(bodyParser.urlencoded({limit: '50mb', extended: true}));
+
 app.use(express.json());
 
 //routes call
@@ -33,3 +35,5 @@ mongoose
   app.listen(3100, () => {
     console.log("Server started successfully");
   });
+
+  
